@@ -37,7 +37,7 @@ const ProductCard = ({ products }) => {
             </div>
             </Link>
            
-           <Link to={`/cart/${products._id}`}>
+           {/* <Link to={`/cart/${products._id}`}> */}
            <div className="m-card-btn">
               {isAvailable ? (
                 <button onClick={handleAddToCart}>Add to cart</button>
@@ -47,7 +47,7 @@ const ProductCard = ({ products }) => {
                 </button>
               )}
             </div>
-           </Link>
+           {/* </Link> */}
             
           </div>
         </div>

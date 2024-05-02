@@ -2,16 +2,28 @@ import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import "../css/DetailCards.css";
 import Star from "../assets/images/Vector star.png";
-import StarHalf from "../assets/icons/icons8-star-half-48.png"
+import StarHalf from "../assets/icons/icons8-star-half-48.png";
 import Plus from "../assets/images/ic_sharp-plus.png";
 import Minus from "../assets/images/ic_sharp-minus.png";
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
-import axios from "axios"; 
+import { useParams, useNavigate, Link } from "react-router-dom";
+import axios from "axios";
+import { useCart } from "../contexts/Cart";
 
 const DetailCard = ({ product }) => {
+  const { addToCart, cart } = useCart();
+  const navigate = useNavigate();
+
   const { productId } = useParams();
-  const { name, description, images, price, quantity, isAvailable, avgRating, size} = product;
+  const {
+    name,
+    description,
+    images,
+    price,
+    quantity,
+    isAvailable,
+    avgRating,
+    size,
+  } = product;
 
   let Price = price.toLocaleString(undefined, {
     minimumFractionDigits: 2,
@@ -29,17 +41,17 @@ const DetailCard = ({ product }) => {
   // const handleSubmitRating = async () => {
   //   setIsSubmitting(true);
   //   try {
-      // Make a POST request to the backend rating endpoint
-      // const response = await axios.post(`/rating/${productId}`,{
-      //   productId: product._id,
-      //   userId: "user123", // Replace with actual user ID
-      //   rating: rating,
-      // });
-      // console.log("Rating submitted:", response.data);
-      // Optionally, update UI or provide feedback to the user
-    // } catch (error) {
-    //   console.error("Error submitting rating:", error);
-      // Optionally, handle errors or provide feedback to the user
+  // Make a POST request to the backend rating endpoint
+  // const response = await axios.post(`/rating/${productId}`,{
+  //   productId: product._id,
+  //   userId: "user123", // Replace with actual user ID
+  //   rating: rating,
+  // });
+  // console.log("Rating submitted:", response.data);
+  // Optionally, update UI or provide feedback to the user
+  // } catch (error) {
+  //   console.error("Error submitting rating:", error);
+  // Optionally, handle errors or provide feedback to the user
   //   } finally {
   //     setIsSubmitting(false);
   //   }
@@ -47,9 +59,8 @@ const DetailCard = ({ product }) => {
 
   useEffect(() => {
     // Set the selected image to the first image in the array when component mounts
-  
-      setSelectedImage(images[0]?.url);
- 
+
+    setSelectedImage(images[0]?.url);
   }, [images]);
   const [count, setCount] = useState(1);
 
@@ -68,56 +79,64 @@ const DetailCard = ({ product }) => {
   };
 
   let starRating;
-  if (avgRating ) {
+  if (avgRating) {
     const fullStars = Math.floor(avgRating);
     const halfStar = avgRating - fullStars >= 0.1;
     starRating = Array.from({ length: fullStars }, (_, index) => (
       <img key={index} src={Star} alt="Star" />
     ));
-    if (halfStar) starRating.push(<img key="half" src={StarHalf} alt="Half Star" />);
+    if (halfStar)
+      starRating.push(<img key="half" src={StarHalf} alt="Half Star" />);
   } else {
-    starRating = <span style={{fontSize: "1.1rem"}}>No rating</span>;
+    starRating = <span style={{ fontSize: "1.1rem" }}>No rating</span>;
   }
 
   return (
     <>
       <div className="productDetail ">
-        <div className="productCont"> 
+        <div className="productCont">
           <div className="productImg">
             <div className="selectImg">
               {/* Loop through images and show the selected image */}
-              {images.length > 0 && images.map((image) => (
-                <div className={`simg ${selectedImage === image?.url ? 'selected' : ''}`}>
-                  <img
-                  key={image?._id}
-                  src={image?.url}
-                  alt={image?.imagePubilicId}
-                  className=""
-                  onClick={() => handleImageClick(image?.url)}
-                />
-                </div>
-              ))}
+              {images.length > 0 &&
+                images.map((image) => (
+                  <div
+                    className={`simg ${
+                      selectedImage === image?.url ? "selected" : ""
+                    }`}
+                  >
+                    <img
+                      key={image?._id}
+                      src={image?.url}
+                      alt={image?.imagePubilicId}
+                      className=""
+                      onClick={() => handleImageClick(image?.url)}
+                    />
+                  </div>
+                ))}
             </div>
             <div className="clickedImg">
               <img
                 src={selectedImage || product?.images[0]?.url}
-                alt={selectedImage === product?.images[0]?.url ? "selected" : ""}
+                alt={
+                  selectedImage === product?.images[0]?.url ? "selected" : ""
+                }
                 className="selected"
-                style={{borderRadius: "10px"}}
+                style={{ borderRadius: "10px" }}
               />
             </div>
           </div>
           <div className="productInfo p-3">
             <h1 className="hG">{name}</h1>
             <p style={{ fontSize: "1.13rem", fontWeight: "400" }}>
-              {description} 
+              {description}
             </p>
 
-              {/* Rating component */}
-      {/* <div> */}
-        {/* Display rating UI here (e.g., star rating component) */}
-        {/* Example: */}
-        {/* <select value={rating} onChange={(e) => handleRatingChange(parseInt(e.target.value))}>
+            {/* Rating component */}
+            {/* <div> */}
+            {/* Display rating UI here (e.g., star rating component) */}
+            {/* Example: */}
+            {/* <select value={rating} onChange={(e) => handleRatingChange(parseInt(e.target.value))}>
           <option value={0}>Select Rating</option>
           <option value={1}>1 Star</option>
           <option value={2}>2 Stars</option>
@@ -127,17 +146,13 @@ const DetailCard = ({ product }) => {
         </select>
       </div> */}
 
-      {/* Button to submit rating */}
-      {/* <button onClick={handleSubmitRating} disabled={rating === 0 || isSubmitting}>
+            {/* Button to submit rating */}
+            {/* <button onClick={handleSubmitRating} disabled={rating === 0 || isSubmitting}>
         {isSubmitting ? "Submitting..." : "Submit Rating"}
       </button> */}
 
-
             <div style={{ display: "flex", alignItems: "center" }} className="">
-              <span
-                className="imgG d-flex gap-1"
-                style={{ width: "5rem" }}
-              >
+              <span className="imgG d-flex gap-1" style={{ width: "5rem" }}>
                 {starRating}
               </span>
 
@@ -150,12 +165,14 @@ const DetailCard = ({ product }) => {
               >
                 {avgRating !== 0 ? (
                   <>
-                    {avgRating} (<span style={{ fontSize: "1.13rem" }}>40 Reviews</span>)
+                    {avgRating} (
+                    <span style={{ fontSize: "1.13rem" }}>40 Reviews</span>)
                   </>
                 ) : (
                   <>
-                  {avgRating} (<span style={{ fontSize: "1.13rem" }}>No Review</span>)
-                </>
+                    {avgRating} (
+                    <span style={{ fontSize: "1.13rem" }}>No Review</span>)
+                  </>
                 )}
               </span>
             </div>
@@ -163,7 +180,11 @@ const DetailCard = ({ product }) => {
               Price:{" "}
               <span
                 className=""
-                style={{ fontSize: "1.8rem", fontWeight: "500", marginLeft:"1.2rem"}}
+                style={{
+                  fontSize: "1.8rem",
+                  fontWeight: "500",
+                  marginLeft: "1.2rem",
+                }}
               >
                 &#x20A6;{Price}
               </span>
@@ -178,14 +199,12 @@ const DetailCard = ({ product }) => {
                   fontSize: "1rem",
                   fontWeight: "500",
                   borderRadius: "4px",
-                  marginLeft:"1.2rem"
+                  marginLeft: "1.2rem",
                 }}
               >
                 {size} Oz
               </button>
-              
             </p>
-            
 
             <div className="d-flex my-2  align-items-center">
               <span className="pe-4" style={{ fontSize: "1.25rem" }}>
@@ -223,9 +242,7 @@ const DetailCard = ({ product }) => {
                 >
                   <span
                     style={{
-                      backgroundColor: isAvailable
-                        ? "#009320"
-                        : "#E70000",
+                      backgroundColor: isAvailable ? "#009320" : "#E70000",
                       width: "10px",
                       height: "10px",
                       borderRadius: "50%",
@@ -233,19 +250,43 @@ const DetailCard = ({ product }) => {
                       marginRight: "5px",
                     }}
                   ></span>
-                  {isAvailable ? `In Stock (${quantity})`  : "Out of Stock"} 
+                  {isAvailable ? `In Stock (${quantity})` : "Out of Stock"}
                 </li>
               </ul>
             </div>
 
             <div className="d-flex flex-column">
-              {isAvailable ? <Button variant="dark" className="buttonG mb-3" style={{ backgroundColor: "black", fontSize: "20px" }}>Buy Now</Button> : <Button variant="dark" className="buttonG mb-3" style={{ backgroundColor: "gray", fontSize: "20px" }} disabled>Sold Out</Button>}
-
-              <Link to={`/cart/${product._id}`} style={{ textDecoration: "none" }} className="">
-                <Button variant="light" className="buttonG  border border-dark" >
-                  Add to Cart
+              {isAvailable ? (
+               <Link to="/cart">
+                <Button
+                  variant="dark"
+                  className="buttonG mb-3"
+                  style={{ backgroundColor: "black", fontSize: "20px" }}
+                  
+                >
+                  Buy Now
                 </Button>
-              </Link>
+               </Link>
+              ) : (
+                <Button
+                  variant="dark"
+                  className="buttonG mb-3"
+                  style={{ backgroundColor: "gray", fontSize: "20px" }}
+                  disabled
+                >
+                  Sold Out
+                </Button>
+              )}
+
+              {/* <Link to={`/cart/${product._id}`} style={{ textDecoration: "none" }} className=""> */}
+              <Button
+                variant="light"
+                className="buttonG  border border-dark"
+                onClick={() => addToCart(product)}
+              >
+                Add to Cart
+              </Button>
+              {/* </Link> */}
             </div>
           </div>
         </div>
@@ -255,4 +296,3 @@ const DetailCard = ({ product }) => {
 };
 
 export default DetailCard;
-

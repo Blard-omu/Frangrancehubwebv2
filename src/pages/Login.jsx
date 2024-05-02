@@ -54,9 +54,10 @@ const Login = () => {
       if (data) {
         console.log(data);
         toast.success("Login successful");
+        const user = data.user.role;
         navigate(
           location.state ||
-            `/dashboard/${ isAdmin === 1 ? "admin" : "user"}`
+            `/dashboard/${ user === 1 ? "admin" : "user"}`
         );
       } else {
         toast.error("Login failed. try again..");

@@ -18,6 +18,7 @@ const CartProvider = ({ children }) => {
     const existingCart = localStorage.getItem("cart");
     return existingCart ? JSON.parse(existingCart) : [];
   });
+  const [qty, setQty] = useState()
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -39,6 +40,8 @@ const CartProvider = ({ children }) => {
     const subtotal = cart.reduce((total, item) => total + item.price, 0);
     return subtotal;
   };
+
+  
   
 
   // console.log("CART", cartSubTotal());
