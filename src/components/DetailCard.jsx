@@ -278,7 +278,6 @@ const DetailCard = ({ product }) => {
                 </Button>
               )}
 
-              {/* <Link to={`/cart/${product._id}`} style={{ textDecoration: "none" }} className=""> */}
               <Button
                 variant="light"
                 className="buttonG  border border-dark"
@@ -286,7 +285,6 @@ const DetailCard = ({ product }) => {
               >
                 Add to Cart
               </Button>
-              {/* </Link> */}
             </div>
           </div>
         </div>

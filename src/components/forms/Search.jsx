@@ -34,7 +34,7 @@ const Search = ({toggleSearchBar})=> {
       <button
         className="btn real-search"
         type="submit"
-        style={{ borderRadius: "0px", backgroundColor: "#0098B8"}}
+        style={{ borderRadius: "0px", backgroundColor: "#000"}}
       >
         {/* Search */}
         <img src={Seicon} alt="" onClick={toggleSearchBar} />
