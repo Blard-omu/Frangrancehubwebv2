@@ -1,0 +1,131 @@
+.all-details {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100%;
+  /* border: 1px solid green; */
+}
+.gaccrel {
+  width: 90% !important;
+  height: 100%;
+}
+
+.detail-card {
+  width: 90%;
+
+}
+.accordion-detailG {
+  width: 55%;
+}
+.relate-p {
+  width: 35%;
+  margin-top: 40px;
+  /* max-height: 1100px; */
+}
+.youtube-g {
+  width: 55%;
+}
+.recently{
+  width: 90%;
+}
+/* Media Query for low resolution  Tablets, Ipads */
+@media (min-width: 379px) and (max-width: 767px) {
+ .detail-card {
+    width: 90%;
+  }
+  .accordion-detailG {
+    width: 24rem;
+  }
+  .relate-p {
+    /* border: 1px solid black; */
+    width: 100%;
+    margin-top: 40px;
+    max-height: 100%;
+  }
+  .youtube-g {
+    width: 97%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .recently{
+    width: 95%;
+  }
+}
+@media (min-width: 321px) and (max-width: 379px) {
+  .accordion-detailG {
+    width: 22rem;
+  }
+  .relate-p {
+    /* border: 1px solid blue; */
+    width: 100%;
+  }
+  .youtube-g {
+    width: 95%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .recently{
+    /* border: 1px solid blue; */
+    width: 95%;
+  }
+}
+@media(max-width: 320px) {
+  .detail-card {
+    width: 100%;
+  }
+  .accordion-detailG {
+    width: 19.5rem;
+  }
+  .relate-p {
+    width: 100%;
+  }
+  .youtube-g {
+    width: 95%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .recently{
+    width: 98%;
+  }
+}
+@media (min-width: 767px) and (max-width: 1100px) {
+    .all-details {
+        gap: 20px;
+        /* border: 1px solid green; */
+      }
+
+    .detail-card {
+        width: 90%;
+      }
+      .accordion-detailG {
+        width: 46.5rem;
+      }
+      .relate-p {
+        width: 100%;
+        margin-top: 40px;
+        max-height: 100%;
+      }
+      .youtube-g {
+        width: 100%;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+}
+@media (min-width: 1104px){
+  .accordion-detailG {
+    width: 51.5rem;
+  }
+}

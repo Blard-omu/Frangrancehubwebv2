@@ -1,0 +1,357 @@
+@media (max-width: 320px) {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none !important;
+    list-style: none;
+  }
+
+  .arrival-top-div-mob {
+    border: 1px solid rgb(236, 233, 233);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    position: sticky;
+    top: 50px;
+    z-index: 999;
+
+    /* border: 1px solid blue; */
+  }
+  .drawer{
+    box-shadow: 0 -2px 2px rgba(var(--border-color-rgb), .65);
+    width: 100%;
+    position: sticky;
+    bottom: 20px;
+    z-index: 9999;
+    background-color: white;
+    height: 20px;
+    margin-top: 200px
+  }
+  .chi-button{
+    background-color: black;
+    color: white;
+    width: 90%;
+    height: 40px;
+    margin-left: 15px;
+    text-align: center;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+   
+  }
+
+  .arrival-products-div-mob {
+    width: 100%;
+    /* border: 1px solid rgb(218, 40, 40) !important; */
+  }
+
+  .card {
+    width: 15rem !important;
+    margin: 0px 60px 0px 60px !important;
+  }
+
+  .select-wrapper select {
+    width: 7rem;
+  }
+
+  .select-wrapper option {
+    font-size: 10px;
+  }
+
+  .arrival-filter-div {
+    margin-top: 20px;
+    width: 16rem;
+    /* height:calc(100vh - 100px); */
+    /* border: 1px solid red; */
+    /* border: 1px solid rgb(176, 172, 172) !important; */
+    border-radius: 5px !important;
+  }
+
+  .btn {
+    margin: 0 !important;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+  .arrival {
+    height: 60px;
+    position:sticky;
+    top:55px;
+    z-index:999999;
+    background-color: white;
+    /* border: 1px solid blue; */
+  }
+  .offcanvas-menu {
+    position: fixed;
+    right: -100%; /* Start off canvas on the right side */
+    top: 0;
+    height: 100vh; /* Full height of the screen */
+    width: 80%; /* Adjust width as needed */
+    max-width: 400px; /* Set maximum width for the offcanvas menu */
+    overflow-y: auto;
+    background-color: #ffffff;
+    transition: right 0.3s ease; /* Transition from right to left */
+    z-index: 9999999;
+    /* padding: 20px; */
+    box-sizing: border-box;
+ /* Adjust border radius to match the sliding direction */
+}
+.drawer{
+  box-shadow: 0 -2px 2px rgba(var(--border-color-rgb), .65);
+  width: 100%;
+  position: sticky;
+  bottom: 20px;
+  z-index: 9999;
+  background-color: white;
+  height: 20px;
+  margin-top: 200px
+}
+.chi-button{
+  background-color: black;
+  color: white;
+  width: 90%;
+  height: 40px;
+  margin-left: 15px;
+  text-align: center;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+ 
+}
+  .home-new-products {
+    width: 390px;
+    height: 300px;
+    /* border: 1px solid #ccc; */
+    overflow: auto;
+    padding: 20px 50px 0px 20px;
+
+  }
+  .home-new-arrival{
+    padding: 10px 0px 0px 6px ;
+}
+
+  .arrival-products-div-mob {
+    width: 100%;
+    /* border: 1px solid rgb(218, 40, 40) !important; */
+  }
+
+  .card {
+    width: 11.5rem !important;
+  }
+
+  .select-wrapper select {
+    width: 7rem;
+  }
+
+  .select-wrapper option {
+    font-size: 10px;
+  }
+
+  .arrival-filter-div {
+    margin-top: 20px;
+    width: 18rem;
+    /* height:calc(100vh - 100px); */
+    /* border: 1px solid red; */
+    /* border: 1px solid rgb(176, 172, 172) !important; */
+    border-radius: 5px !important;
+    z-index: 9999
+  }
+
+  .btn {
+    margin: 0 !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+
+  .card {
+    width: 9rem !important;
+  }
+  .drawer{
+    box-shadow: 0 -2px 2px rgba(var(--border-color-rgb), .65);
+    width: 100%;
+    position: sticky;
+    bottom: 25px;
+    z-index: 9999;
+    background-color: white;
+    height: 20px;
+    margin-top: 550px
+  }
+  .chi-button{
+    background-color: black;
+    color: white;
+    width: 90%;
+    height: 40px;
+    margin-left: 15px;
+    text-align: center;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+   
+  }
+  .arrival-top-div-mob {
+    /* border: 2px solid rgb(208, 207, 207); */
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgb(208, 207, 207);
+    height: 45px;
+    /* width: 24.3rem; */
+    /* margin-left: 0px; */
+    position: sticky;
+    top: 55px;
+    background-color: white;
+    z-index: 999;
+    /* border: 1px solid blue; */
+  }
+  .arrival {
+    height: 60px;
+    position:sticky;
+    top:150px;
+    z-index:9000;
+    background-color: white;
+    /* border: 1px solid blue; */
+  }
+  .offcanvas-menu {
+    position: fixed;
+    right: -100%; /* Start off canvas on the right side */
+    top: 0;
+    height: 100vh; /* Full height of the screen */
+    width: 80%; /* Adjust width as needed */
+    max-width: 400px; /* Set maximum width for the offcanvas menu */
+    overflow-y: auto;
+    background-color: #ffffff;
+    transition: right 0.3s ease; /* Transition from right to left */
+    z-index: 9999999;
+    /* padding: 20px; */
+    box-sizing: border-box;
+ /* Adjust border radius to match the sliding direction */
+}
+  .home-new-arrival{
+    padding: 30px 0px 10px 35px ;
+}
+  .home-new-products {
+    padding: 0px 50px 0px 50px;
+    width: 800px;
+    height: 500px;
+    /* border: 1px solid red; */
+    overflow: auto;
+  }
+
+  .arrival-desk-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red!important; */
+  }
+
+  .select-wrapper option {
+    font-size: 8px;
+  }
+
+  .arrival-products-div-desk {
+    width: 70%;
+  }
+
+  .arrival-filter-div {
+    /* width: 30%;
+    margin-left: 20px;
+    height: 100%;
+    border-right: 1px solid rgb(91, 90, 90) !important; */
+    /* border-radius: 10px !important; */
+  }
+
+  .arrival-main-div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+}
+
+@media (min-width: 900px) {
+  .home-div {
+    width: 100%;
+    display: flex !important;
+    align-items: center;
+    height: 100%;
+  }
+
+  .arrival-desk-div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid blue !important; */
+  }
+
+  .arrival-main-div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+  }
+
+  .arrival-filter-div {
+    width: 20%;
+    height: 100%;
+    border: 1px solid rgb(228, 222, 222) !important;
+    border-radius: 10px !important;
+    padding-bottom: 50px;
+  }
+
+  .arrival-products-div-desk {
+    width: 80%;
+    /* border: 1px solid rgb(177, 24, 24) !important; */
+    height: 100%;
+    /* justify-content: space-between; */
+    /* margin-left: 50px; */
+  }
+
+  .card {
+    width: 16.5rem !important;
+  }
+
+  .arrival-top-div-desk {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* top right bottom left */
+    /* margin: auto; */
+    /* border: 1px solid red!important; */
+    margin: 0px 0px 50px 20px;
+  }
+}
+
+/* .breadcrumb-item + .breadcrumb-item::before {
+    content: "›";
+    padding: 0 5px;
+} */
+/* .breadcrumb-item {
+    + .breadcrumb-item {
+  
+      &::before {
+        float: left; 
+        
+        
+        content:"*>";
+      }
+    }
+  
+    &.active {
+      color: black;
+    }
+  } */

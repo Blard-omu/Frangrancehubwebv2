@@ -1,0 +1,129 @@
+.blog-conatiner{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 100px;
+
+}
+.blogs{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    min-height: 740px;
+    width: 90%;
+    
+}
+.blog-display{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.blog-card{
+    width: 23rem;
+    height: 40rem;
+    border: 1px solid #ACACAC;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.blog-img{
+    width: 100%;
+   
+}
+
+@media (min-width: 768px) and (max-width: 1024px){
+    .blog-conatiner{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 100px;
+    
+    }
+    .blogs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+        
+    }
+    .blog-display{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        place-items: start;
+    }
+    .blog-card{
+        width: 350px;
+        height: 600px;
+        border: 1px solid #ACACAC;
+        border-radius: 10px; 
+    }
+    .blog-head{
+        text-align: left ;
+    }
+}
+@media (min-width: 300px) and (max-width: 767px) {
+    .blog-conatiner{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+    
+    }
+    .blogs{
+        display: flex;
+        justify-content: center;
+        
+    }
+    .blog-head{
+        text-align: left ;
+    }
+    .blog-display{
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 10px;
+        /* padding-right: 0; */
+        gap: 20px;
+        overflow-x: scroll;  
+    }
+    .blog-card{
+        width: 350px;
+        /* width: 100%; */
+        height: 580px;
+        border: 1px solid #ACACAC;
+        border-radius: 10px;
+        flex: 0 0 95%;
+       
+       
+    }
+    .blog-img{
+        width: 100%;
+       
+    }
+    
+}
+@media(max-width: 320px) {
+    .blog-display{
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 10px;
+        /* padding-right: 0; */
+        gap: 20px;
+        overflow-x: scroll;  
+    }
+    .blog-card{
+        width: 350px;
+        /* width: 100%; */
+        height: 600px;
+        border: 1px solid #ACACAC;
+        border-radius: 10px;
+        flex: 0 0 100%;
+       
+       
+    }
+}
