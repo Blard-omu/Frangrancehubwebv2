@@ -31,31 +31,6 @@ const DetailCard = ({ product }) => {
 
   const [selectedImage, setSelectedImage] = useState(images[0]?.url);
 
-  // const [rating, setRating] = useState(0); // State variable to store user's rating
-  // const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // const handleRatingChange = (newRating) => {
-  //   setRating(newRating);
-  // };
-
-  // const handleSubmitRating = async () => {
-  //   setIsSubmitting(true);
-  //   try {
-  // Make a POST request to the backend rating endpoint
-  // const response = await axios.post(`/rating/${productId}`,{
-  //   productId: product._id,
-  //   userId: "user123", // Replace with actual user ID
-  //   rating: rating,
-  // });
-  // console.log("Rating submitted:", response.data);
-  // Optionally, update UI or provide feedback to the user
-  // } catch (error) {
-  //   console.error("Error submitting rating:", error);
-  // Optionally, handle errors or provide feedback to the user
-  //   } finally {
-  //     setIsSubmitting(false);
-  //   }
-  // };
 
   useEffect(() => {
     // Set the selected image to the first image in the array when component mounts
@@ -131,25 +106,6 @@ const DetailCard = ({ product }) => {
             <p style={{ fontSize: "1.13rem", fontWeight: "400" }}>
               {description}
             </p>
-
-            {/* Rating component */}
-            {/* <div> */}
-            {/* Display rating UI here (e.g., star rating component) */}
-            {/* Example: */}
-            {/* <select value={rating} onChange={(e) => handleRatingChange(parseInt(e.target.value))}>
-          <option value={0}>Select Rating</option>
-          <option value={1}>1 Star</option>
-          <option value={2}>2 Stars</option>
-          <option value={3}>3 Stars</option>
-          <option value={4}>4 Stars</option>
-          <option value={5}>5 Stars</option>
-        </select>
-      </div> */}
-
-            {/* Button to submit rating */}
-            {/* <button onClick={handleSubmitRating} disabled={rating === 0 || isSubmitting}>
-        {isSubmitting ? "Submitting..." : "Submit Rating"}
-      </button> */}
 
             <div style={{ display: "flex", alignItems: "center" }} className="">
               <span className="imgG d-flex gap-1" style={{ width: "5rem" }}>
