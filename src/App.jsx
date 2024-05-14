@@ -2,7 +2,6 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import AllFragance from "./pages/AllFragrance";
-import Menu from "./components/NavBar";
 import CartEmpty from "./pages/Chart";
 import { ToastContainer } from "react-toastify";
 import SignUp from "./pages/SignUp";
@@ -28,24 +27,22 @@ import AdminOrders from "./pages/admin/AdminOrders";
 import UserProfile from "./pages/user/UserProfile";
 import UserOrders from "./pages/user/UserOrders";
 
-// WARNING: Do Not change anything in this pages.
 
 function App() {
-  const { PrivateRoutes, AdminRoutes} = useAuth();
+  const { PrivateRoutes, AdminRoutes } = useAuth();
   return (
     <>
       <Router>
-        <ToastContainer/>
+        <ToastContainer />
         {/* <Breadcrumbs/>   */}
         <ScrollToTop />
-         <Routes>
-          <Route element={<Menu />}></Route>
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/all-fragrances" element={<AllFragance />} />
           <Route path="/cart-empty" element={<CartEmpty />} />
           <Route path="/checkout" element={<CustomerDetails />} />
           <Route path="/cart" element={<CartItems />} />
-          <Route path="/order" element={<Order/>} />
+          <Route path="/order" element={<Order />} />
           <Route path="/all-fragrances" element={<AllFragance />} />
           <Route path="/new-arrivals" element={<Newarrival />} />
           <Route path="/detail/:productId" element={<DetailPages />} />
@@ -56,18 +53,23 @@ function App() {
           <Route path="/dashboard" element={<PrivateRoutes />}>
             <Route path="user" element={<UserDashboard />} />
             <Route path="user/order" element={<Order />} />
-            <Route path="user/profile" element={<UserProfile/>} />
-            <Route path="user/orders" element={<UserOrders/>} />
+            <Route path="user/profile" element={<UserProfile />} />
+            <Route path="user/orders" element={<UserOrders />} />
             {/* Admin Routes */}
             <Route path="" element={<AdminRoutes />}>
               <Route path="admin" element={<AdminDashboard />} />
               <Route path="admin-category" element={<AdminCategory />} />
               <Route path="admin-product" element={<AdminProduct />} />
-              <Route path="admin-product/detail/:slug" element={<AdminProductDetail />}/>
+              <Route
+                path="admin-product/detail/:slug"
+                element={<AdminProductDetail />}
+              />
               <Route path="admin-products" element={<AdminProducts />} />
-              <Route path="admin-product/update/:slug" element={<AdminProductUpdate />}/>
-              <Route path="admin/orders" element={<AdminOrders/>} />
-
+              <Route
+                path="admin-product/update/:slug"
+                element={<AdminProductUpdate />}
+              />
+              <Route path="admin/orders" element={<AdminOrders />} />
             </Route>
           </Route>
           <Route path="/signup" element={<SignUp />} />

@@ -3,16 +3,15 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import "../css/Nav.css";
-import Logo from "../assets/images/Frame 579.png";
-import Profileimg from "../assets/icons/humprofile.png";
-import Cartimg from "../assets/icons/blackcart.png";
-import Seicon from "../assets/icons/Vector (5).png";
+import "../../css/Nav.css";
+import Logo from "../../assets/images/Frame 579.png";
+import Profileimg from "../../assets/icons/humprofile.png";
+import Cartimg from "../../assets/icons/blackcart.png";
 import Dropdown from "react-bootstrap/Dropdown";
-import { useAuth } from "../contexts/Auth.jsx";
+import { useAuth } from "../../contexts/Auth.jsx";
 import { useNavigate, Link } from "react-router-dom";
-import Search from "./forms/Search.jsx";
-import { useCart } from "../contexts/Cart";
+import Search from "../forms/Search.jsx";
+import { useCart } from "../../contexts/Cart";
 
 
 

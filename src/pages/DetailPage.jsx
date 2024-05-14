@@ -7,8 +7,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../css/DetailPage.css";
 import Footer from "../components/Footer";
-import Menu from "../components/NavBar";
-import SideNav from "../components/SideNav";
+import SideNav from "../components/nav/SideNav";
+import Menu from "../components/nav/NavBar";
 import DetailCardLoading from "../components/DetailLoading";
 import RecentlyViewed from "../components/RecentlyViewed";
 

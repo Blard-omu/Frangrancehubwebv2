@@ -30,6 +30,18 @@
     justify-content: space-between;
     padding: 20px 0;
 }
+.discount-relative{
+    position: relative;
+}
+.discount{
+    position: absolute;
+    background: #FFDBDB;
+    padding: 5px 10px;
+    color: red;
+    right: 5px;
+    top: 20px;
+    border-radius: 2px;
+}
 
 @media (max-width: 786px) {
     .flash-header{

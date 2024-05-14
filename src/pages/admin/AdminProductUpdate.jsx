@@ -8,7 +8,8 @@ import { IoImages } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa";
 import "../../css/Admin.css";
 import AdminMenu from "../../components/nav/AdminMenu";
-import Menu from "../../components/NavBar";
+import Menu from "../../components/nav/NavBar";
+import SideNav from "../../components/nav/SideNav";
 import Footer from "../../components/Footer";
 
 const AdminProductUpdate = () => {

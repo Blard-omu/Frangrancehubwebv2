@@ -4,7 +4,6 @@ import Accordion from 'react-bootstrap/Accordion';
 import "../css/NAAccordion.css"
 import searchEye from "../assets/images/Vector search.png"
 import "../css/NACheckbox.css"
-// import { data } from "../Db/Perfumedb"
 import axios from "axios";
 import "../css/NAAlphabets.css"
 

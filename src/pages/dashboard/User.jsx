@@ -1,8 +1,8 @@
 import { useAuth } from "../../contexts/Auth";
 import Jumbotron from "../../components/cards/Jumbotron";
 import UserMenu from "../../components/nav/UserMenu";
-import Menu from "../../components/NavBar";
-import SideNav from "../../components/SideNav";
+import Menu from "../../components/nav/NavBar";
+import SideNav from "../../components/nav/SideNav";
 
 const UserDashboard = () => {
   // context

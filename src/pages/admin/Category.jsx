@@ -7,6 +7,8 @@ import Modal from "react-bootstrap/Modal";
 import AdminMenu from "../../components/nav/AdminMenu";
 import Jumbotron from "../../components/cards/Jumbotron";
 import LoadBtn from "../../components/utils/LoadBtn";
+import Menu from "../../components/nav/NavBar";
+import SideNav from "../../components/nav/SideNav";
 
 const AdminCategory = () => {
   const [name, setName] = useState("");
@@ -106,6 +108,8 @@ const AdminCategory = () => {
 
   return (
     <>
+    <Menu/>
+    <SideNav/>
     <Jumbotron
         title={`Hello ${auth?.user?.name}`}
         subTitle="Admin Dashboard"

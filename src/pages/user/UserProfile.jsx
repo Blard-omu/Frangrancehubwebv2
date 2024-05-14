@@ -4,7 +4,8 @@ import Jumbotron from "../../components/cards/Jumbotron";
 import UserMenu from "../../components/nav/UserMenu";
 import axios from "axios";
 import {toast} from "react-toastify";
-import Menu from "../../components/NavBar"
+import Menu from "../../components/nav/NavBar";
+import SideNav from "../../components/nav/SideNav";
 import Footer from "../../components/Footer";
 
 const UserProfile = ()=> {

@@ -1,8 +1,8 @@
 import { FaCheckCircle } from "react-icons/fa";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Menu from "../components/NavBar";
-import SideNav from "../components/SideNav";
+import Menu from "../components/nav/NavBar";
+import SideNav from "../components/nav/SideNav";
 import { useAuth } from "../contexts/Auth";
 
 const Order = () => {

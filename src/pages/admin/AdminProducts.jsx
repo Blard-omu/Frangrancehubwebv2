@@ -5,7 +5,8 @@ import AdminMenu from "../../components/nav/AdminMenu";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import Menu from "../../components/NavBar";
+import Menu from "../../components/nav/NavBar";
+import SideNav from "../../components/nav/SideNav";
 import Footer from "../../components/Footer";
 
 const AdminProducts = () => {

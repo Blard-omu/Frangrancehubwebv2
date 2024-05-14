@@ -9,7 +9,8 @@ import { FaPlus } from "react-icons/fa";
 import { TiDelete } from "react-icons/ti";
 import "../../css/Admin.css";
 import AdminMenu from "../../components/nav/AdminMenu";
-import Menu from "../../components/NavBar";
+import SideNav from "../../components/nav/SideNav";
+import Menu from "../../components/nav/NavBar";
 import Footer from "../../components/Footer";
 
 const AdminProduct = () => {

@@ -2,11 +2,8 @@ import  { useState } from 'react'
 import { data } from "../Db/Perfumedb"
 import ProductCard from "./NAProductCard";
 import ForwardArrowImg from "../assets/images/Vector.png"
-import BackwardArrowImg from "../assets/images/Vector back.png"
 import "../css/NAProductcard.css"
-// import "../css/Newarrival.css"
 
-// import { NavLink } from 'react-router-dom';
 
 const Products = () => {
   const itemsPerPage = 15;

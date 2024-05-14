@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import "../css/Newarrival.css"
-// import Dropdown from 'react-bootstrap/Dropdown';
 
 function Mydropdown1({handleSort}) {
     const [selectedOption, setSelectedOption] = useState("Best Seller");

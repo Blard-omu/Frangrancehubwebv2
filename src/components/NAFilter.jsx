@@ -3,7 +3,6 @@ import "../css/FilterbyM.css";
 import "../css/Newarrival.css";
 import { LuFilter } from "react-icons/lu";
 import { GoDotFill } from "react-icons/go";
-import Button from 'react-bootstrap/Button';
 import Accord from "./AccordionM";
 
 const OffCanvasButton = ({

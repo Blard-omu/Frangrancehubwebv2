@@ -1,8 +1,8 @@
 import { useAuth } from "../../contexts/Auth.jsx";
 import Jumbotron from "../../components/cards/Jumbotron.jsx";
 import AdminMenu from "../../components/nav/AdminMenu.jsx";
-import Menu from "../../components/NavBar.jsx";
-import SideNav from "../../components/SideNav.jsx";
+import Menu from "../../components/nav/NavBar";
+import SideNav from "../../components/nav/SideNav.jsx";
 
 const AdminDashboard = () => {
   // context

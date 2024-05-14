@@ -9,7 +9,8 @@ import { toast } from "react-toastify";
 import Accordion from "react-bootstrap/Accordion";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import Card from "react-bootstrap/Card";
-import Menu from "../../components/NavBar"
+import Menu from "../../components/nav/NavBar";
+import SideNav from "../../components/nav/SideNav";
 import Footer from "../../components/Footer";
 
 const AdminOrders = () => {

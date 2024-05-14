@@ -1,21 +1,16 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import hamburger from "../assets/icons/ham.png";
-import Logo from "../assets/icons/Frame 579 (0).png";
-import "../css/SideBar.css";
-import Searchi from "../assets/icons/Vector (5).png";
-import Humani from "../assets/icons/person.png";
-import Carti from "../assets/icons/cart.png";
-import SearchB from "../assets/icons/Vector (searchb).png";
-import HumanB from "../assets/icons/humprofile.png";
-import CartB from "../assets/icons/blackcart.png";
-import FragLogo from "../assets/images/Frame 579.png";
+import hamburger from "../../assets/icons/ham.png";
+import Logo from "../../assets/icons/Frame 579 (0).png";
+import "../../css/SideBar.css";
+import Humani from "../../assets/icons/person.png";
+import Carti from "../../assets/icons/cart.png";
+import FragLogo from "../../assets/images/Frame 579.png";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/Auth";
-import Search from "./forms/Search";
+import { useAuth } from "../../contexts/Auth";
 import Dropdown from "react-bootstrap/Dropdown";
-import HandleShow from "./HandleShow";
+import HandleShow from "../HandleShow";
 
 function SideNav({ name, ...props }) {
   const [show, setShow] = useState(false);

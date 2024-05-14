@@ -13,7 +13,6 @@ const Search = ({toggleSearchBar})=> {
     e.preventDefault();
     try {
       const { data } = await axios.get(`/product/search/${values?.keyword}`);
-      // console.log(data);
       setValues({ ...values, results: data?.products });
       navigate("/search");
     } catch (err) {
@@ -22,7 +21,7 @@ const Search = ({toggleSearchBar})=> {
   };
 
   return (
-    <form className="d-flex" onSubmit={handleSubmit}>
+    <form className=" container-fluid d-flex" onSubmit={handleSubmit}>
       <input
         type="text"
         style={{ borderRadius: "0px" }}
@@ -32,11 +31,10 @@ const Search = ({toggleSearchBar})=> {
         value={values.keyword}
       />
       <button
-        className="btn real-search"
+        className="btn real-search bg-dark"
         type="submit"
-        style={{ borderRadius: "0px", backgroundColor: "#000"}}
+        style={{ borderRadius: "0px"}}
       >
-        {/* Search */}
         <img src={Seicon} alt="" onClick={toggleSearchBar} />
       </button>
     </form>

@@ -48,7 +48,7 @@ const CountDownTimer = () => {
       }finally {
         setLoading(false); // Set loading to false regardless of success or error
       }
-      console.log(product);
+      // console.log(product);
     };
     fetchData();
   }, []);
@@ -86,10 +86,11 @@ const CountDownTimer = () => {
                   <>
                     <Link className="link" to={`/detail/${product._id}`}>
                       <div key={_id}>
-                        <div className="m-card-Container" key={_id}>
+                        <div className="m-card-Container discount-relative" key={_id}>
                           <div className="m-image">
                             <img src={images[0].url} />
                           </div>
+                          <p className="discount">-20%</p>
                           <div className="m-card-info">
                             <div className="m-card-text">
                               <h4>{name}</h4>

@@ -6,10 +6,8 @@ import { Link } from "react-router-dom";
 const RecentlyViewed = ({limit}) => {
   const [recentlyViewed, setRecentlyViewed] = useState([]);
   useEffect(() => {
-    // Retrieve the list of recently viewed product IDs from local storage
     const recentlyViewedIds = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
 
-    // Fetch details of each recently viewed product
     const fetchRecentlyViewedProducts = async () => {
       const promises = recentlyViewedIds.map(productId => axios.get(`/product/${productId}`));
       try {
@@ -24,14 +22,13 @@ const RecentlyViewed = ({limit}) => {
 
     fetchRecentlyViewedProducts();
   }, []);
-   // Limit the number of recently viewed products displayed based on screen size
    let limitedRecentlyViewed = [];
    if (window.innerWidth < 1024) {
      limitedRecentlyViewed = recentlyViewed.slice(0, limit);
    } else {
      limitedRecentlyViewed = recentlyViewed.slice(0, limit / 2);
    }
- console.log(recentlyViewed);
+//  console.log(recentlyViewed);
   return (
     <div className="mb-4 mt-4" >
       <div className="">

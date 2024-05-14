@@ -1,8 +1,8 @@
 import { useSearch } from "../contexts/Search";
 import SearchProductCard from "../components/cards/SearchProductCard";
 import Jumbotron from "../components/cards/Jumbotron";
-import Menu from "../components/NavBar";
-import SideNav from "../components/SideNav";
+import Menu from "../components/nav/NavBar";
+import SideNav from "../components/nav/SideNav";
 import Footer from "../components/Footer";
 
 export default function Search() {
