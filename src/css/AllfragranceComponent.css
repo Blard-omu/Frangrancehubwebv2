@@ -9,7 +9,7 @@
 .home-all-fragrance-header{
     display: flex;
     justify-content: space-between;
-    /* width: 90%; */
+    width: 90%;
     height: 80px;
     align-items: center;
     justify-content: space-between;
@@ -73,7 +73,6 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        /* column-gap: 0px; */
     }
     .best-seller-product{
         width: 95%;

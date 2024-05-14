@@ -63,16 +63,16 @@ const AllFragrance = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
-        `https://fragrancehubbe.onrender.com/api/v1/product/all?page=1&limit=1000000`
+      const { data } = await axios.get(
+        `/product/all?page=1&limit=1000000`
       );
 
       // const {products} = response.data;
-      const shuffledProducts = shuffle(response?.data?.products);
+      const shuffledProducts = shuffle(data?.products);
 
       setFetchProduct(shuffledProducts);
       setCurrentProducts(shuffledProducts);
-      console.log(response?.data?.products);
+      console.log(data?.products);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -128,7 +128,7 @@ const AllFragrance = () => {
       console.log(storedPage);
       setCurrentPage(parseInt(storedPage));
     } else {
-      setCurrentPage(1); // Set default page to 1 if not found in local storage
+      setCurrentPage(1); 
     }
   }, []);
 
@@ -299,9 +299,9 @@ const AllFragrance = () => {
             )
           );
           break;
-        case "BestSeller":
-          handleDefaultSort();
-          break;
+        // case "BestSeller":
+        //   handleDefaultSort();
+        //   break;
         case "OldToNew":
           setCurrentProducts(
             [...currentProducts].sort(
