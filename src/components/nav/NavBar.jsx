@@ -57,10 +57,10 @@ function Menu() {
                     {!auth.user ? (
                       <div className="text-center">
                         <Dropdown.Item  className="first-drop">
-                        <Link className="text-decoration-none" to="/login">Login</Link>
+                        <Link className="text-decoration-none text-dark" to="/login">Login</Link>
                         </Dropdown.Item>
                         <Dropdown.Item  className="first-drop">
-                          <Link className=" text-decoration-none" to="/signup">Sign Up</Link>
+                          <Link className="text-decoration-none text-dark" to="/signup">Sign Up</Link>
                         </Dropdown.Item>
                       </div>
                     ) : (
@@ -68,7 +68,7 @@ function Menu() {
                         <Dropdown.Item
                           className="first-drop"
                         >
-                          <Link className=" text-decoration-none" to={
+                          <Link className="text-decoration-none text-dark" to={
                             auth?.user.role === 1
                               ? "/dashboard/admin"
                               : "/dashboard/user"

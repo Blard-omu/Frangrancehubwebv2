@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import hamburger from "../../assets/icons/ham.png";
 import Logo from "../../assets/icons/Frame 579 (0).png";
@@ -7,15 +6,20 @@ import "../../css/SideBar.css";
 import Humani from "../../assets/icons/person.png";
 import Carti from "../../assets/icons/cart.png";
 import FragLogo from "../../assets/images/Frame 579.png";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/Auth";
 import Dropdown from "react-bootstrap/Dropdown";
 import HandleShow from "../HandleShow";
+import { useCart } from "../../contexts/Cart";
+
 
 function SideNav({ name, ...props }) {
   const [show, setShow] = useState(false);
-  const { auth, login, logout } = useAuth();
-  
+  const { auth, logout } = useAuth();
+  const { cart } = useCart();
+  const navigate = useNavigate();
+
+
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -26,7 +30,7 @@ function SideNav({ name, ...props }) {
   };
 
   return (
-    <div className="side-top">
+    <div className="side-top sticky-top my-0 py-0">
       <div className="off-body sticky-top">
         <div className="upNav " style={{ color: "white" }}>
           <div className="left-nav">
@@ -59,7 +63,7 @@ function SideNav({ name, ...props }) {
               <img src={Carti} alt="" />
               </div>
             </Link>
-            <div className="cartcount-s">0</div>
+            <div className="cartcount-s">{cart.length > 0 ? cart.length : 0}</div>
           </div>
         </div>
       </div>

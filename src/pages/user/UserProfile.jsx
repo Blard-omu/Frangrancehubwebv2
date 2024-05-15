@@ -81,6 +81,7 @@ const UserProfile = () => {
   return (
     <>
       <Menu />
+      <SideNav/>
       <Jumbotron
         title={`Hello ${
           auth?.user?.username ? auth?.user?.username : auth?.user?.name
@@ -94,8 +95,8 @@ const UserProfile = () => {
           </div>
           <div className="col-md-9">
             <div className="p-3 mt-2 mb-2 h4 bg-light">Profile</div>
-            <div className="rounded" style={{width: "80px", height: "80px"}}>
-              {avatar && <img src={avatar} alt="avatar" className="image-fluid w-100"/> }
+            <div className="" style={{width: "100px", height: "100px", borderRadius: "50%", border: "3px solid #0098B8"}}>
+              {avatar && <img src={avatar} alt="avatar" className=" w-100 h-100" style={{borderRadius: "50%"}}/> }
             </div>
 
             <form onSubmit={handleSubmit}>

@@ -31,6 +31,11 @@ const AdminMenu = () => {
             Manage orders
           </NavLink>
         </li>
+        <li>
+          <NavLink className="list-group-item text-dark" to="/dashboard/user/profile">
+            Update Profile
+          </NavLink>
+        </li>
       </ul>
     </>
   );

@@ -57,17 +57,17 @@ const Login = () => {
       setLoading(false);
 
       if (data) {
-        toast.success("Login successful");
         const userRole = data.user.role;
         navigate(
           location.state ? location.state.from : `/dashboard/${userRole === 1 ? "admin" : "user"}`
         );
-      } else {
-        toast.error("Login failed. Please try again.");
+        toast.success("Login successful");
+
       }
-    } catch (error) {
-      console.error("Login Error:", error.message);
-      toast.error("Login failed. Please try again.");
+    } catch (err) {
+      console.error("Login Error:", err.message);
+      const errMsg = err.message
+      toast.error(errMsg);
       setLoading(false);
     }
   };
