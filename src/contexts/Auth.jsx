@@ -31,10 +31,10 @@ const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  const login = async (email, password) => {
+  const login = async (identifier, password) => {
     try {
       const { data } = await axios.post("/auth/login", {
-        email,
+        identifier,
         password,
       });
 
@@ -64,12 +64,12 @@ const AuthProvider = ({ children }) => {
   };
 
   // Signup function
-  const signup = async (name, email, password) => {
+  const signup = async (formData) => {
     try {
-      const { data } = await axios.post("/auth/register", {
-        name,
-        email,
-        password,
+      const { data } = await axios.post("/auth/register", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
 
       if (!data.error) {

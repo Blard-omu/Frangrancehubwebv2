@@ -2,20 +2,14 @@ import React, { useState } from "react";
 import "../css/Login.css";
 import { toast } from "react-toastify";
 import signinIcon from "../assets/icons/signinIcon.png";
-import signin from "../assets/images/Signindan.png";
-import { FaRegEye } from "react-icons/fa";
-import { FaRegEyeSlash } from "react-icons/fa";
 import { useAuth } from "../contexts/Auth";
 import img2 from "../assets/images/download-removebg-preview.png";
 import { IoEyeOffOutline } from "react-icons/io5";
 import { IoEyeOutline } from "react-icons/io5";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 
-
-
 const Login = () => {
-  // hooks/
-  const [email, setEmail] = useState("gidi@email.com");
+  const [email, setEmail] = useState("sisi@email.com");
   const [password, setPassword] = useState("password");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -23,49 +17,57 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { auth, login } = useAuth();
-  const isAdmin = auth?.user?.role
-
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
+
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!email || !password) {
       return toast.error("Enter all fields");
     }
+
     const emailRegex = /\S+@\S+\.\S+/;
-    if (!emailRegex.test(email)) {
-      return toast.error("invalid email address");
+    const isEmail = emailRegex.test(email);
+
+    if (isEmail) {
+      if (!emailRegex.test(email)) {
+        return toast.error("Invalid email address");
+      }
+    } else {
+      if (email.trim().length < 3) { 
+        return toast.error("Invalid username");
+      }
     }
+
     const pwdTrim = password.trim();
     if (!password || pwdTrim.length < 6) {
       return toast.error("Enter a valid password");
     }
+
     try {
       setLoading(true);
       const data = await login(email, password);
       setLoading(false);
 
       if (data) {
-        console.log(data);
         toast.success("Login successful");
-        const user = data.user.role;
+        const userRole = data.user.role;
         navigate(
-          location.state ||
-            `/dashboard/${ user === 1 ? "admin" : "user"}`
+          location.state ? location.state.from : `/dashboard/${userRole === 1 ? "admin" : "user"}`
         );
       } else {
-        toast.error("Login failed. try again..");
+        toast.error("Login failed. Please try again.");
       }
-    } catch (err) {
-      // console.log(err?.message);
-      const msg = err?.message;
-      toast.error(msg);
+    } catch (error) {
+      console.error("Login Error:", error.message);
+      toast.error("Login failed. Please try again.");
       setLoading(false);
     }
   };
@@ -83,16 +85,13 @@ const Login = () => {
             </h2>
           </div>
 
-          {/* <div className="middle-section">
-            <p>Enter your details to access your account</p>
-          </div> */}
           <form className="form-dan" onSubmit={handleSubmit}>
             <div className="form-action">
-              <label>Email</label>
+              <label>Email or Username</label>
               <input
-                type="email"
+                type="text"
                 className="form-control"
-                placeholder="Enter your email"
+                placeholder="Enter your email or username"
                 value={email}
                 onChange={handleEmailChange}
               />
@@ -165,11 +164,6 @@ const Login = () => {
             </p>
           </div>
         </div>
-        {/* <div className="right-side">
-          <div className="logo ">
-            <img src={signin} alt="" />
-          </div>
-        </div> */}
       </div>
     </div>
   );
