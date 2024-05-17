@@ -9,65 +9,86 @@ import { Link } from "react-router-dom";
 import CartEmpty from "../pages/Chart";
 import { useAuth } from "../contexts/Auth";
 import { useNavigate } from "react-router-dom";
+import RecentlyViewed from "./RecentlyViewed";
+import CountDownTimer from "./CountDownTimer";
 
 const CartItems = () => {
-  const { cart, cartSubTotal, removeFromCart } = useCart();
+  const { cart, cartSubTotal, removeFromCart, increaseQty, decreaseQty } =
+    useCart();
   const { auth } = useAuth();
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   console.log("Cart Items:", cart);
-  // }, [cart]);
 
   return (
     <>
       <Menu />
       <SideNav />
-      {cart.length > 0 ? (
+      {cart?.length > 0 ? (
         <div
           className=" container-fluid"
           style={{ marginTop: "1rem", marginBottom: "2rem" }}
         >
           <div className="row">
             <div className=" col-md-8 ">
-              {cart.map((item) => (
-                <div className="card-kc shadow" key={item._id}>
-                  <div className="img-card-kc">
-                    <div className="left-img-kc">
-                      <div className="img-kc-kc">
-                        <img src={item.images[0].url} alt={item.name} />
+              <div className="sum bg-light">
+                <h4>Cart {cart?.length > 1 ? "Items" : "Item"} ({cart?.length})</h4>
+              </div>
+              {cart &&
+                cart.length > 0 &&
+                cart.map((item) => (
+                  <div className="card-kc shadow" key={item._id}>
+                    <div className="img-card-kc">
+                      <div className="left-img-kc">
+                        <div className="img-kc-kc">
+                          <img src={item.images[0].url} alt={item.name} />
+                        </div>
+                        <div className="text-card-kc">
+                          <h5>{item.name}</h5>
+                          <p>{item.description}</p>
+                          <p className="stock-kc">
+                            {item.isAvailable ? "In stock" : "Out of stock"} (
+                            {item.isAvailable && item.quantity})
+                          </p>
+                        </div>
                       </div>
-                      <div className="text-card-kc">
-                        <h5>{item.name}</h5>
-                        <p>{item.description}</p>
-                        <p className="stock-kc">
-                          {item.isAvailable ? "In stock" : "Out of stock"}
-                        </p>
+                      <div className="btn-kc">
+                        <h4>&#8358;{item.price} <small className="text-secondary" style={{fontSize: "0.8rem"}}>x {item.addedQty}</small></h4>
                       </div>
                     </div>
-                    <div className="btn-kc">
-                      <h4>&#8358;{item.price}</h4>
+                    <div className="del-items">
+                      <div
+                        className="r text-danger"
+                        onClick={() => removeFromCart(item._id)}
+                        style={{ cursor: "pointer" }}
+                      >
+                        <ImBin2 />
+                        <span className="text-secondary ps-2">Remove item</span>
+                      </div>
+                      <div className="add-btn-kc">
+                        <button
+                          className="btn-kc-kc"
+                          onClick={() => decreaseQty(item._id)}
+                        >
+                          -
+                        </button>
+                        <span>
+                          <b>{item.addedQty ? item.addedQty : 0}</b>
+                        </span>
+                        <button
+                          // className="btn-kc-kcee"
+                          className={item.quantity === item.addedQty ? "opacity-50" : "btn-kc-kcee"}
+                          onClick={() => increaseQty(item._id)}
+                          disabled={item.quantity === item.addedQty}
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
                   </div>
-                  <div className="del-items">
-                    <div className="r" onClick={() => removeFromCart(item._id)}>
-                      <ImBin2 />
-                      Remove item
-                    </div>
-                    <div className="add-btn-kc">
-                      <button className="btn-kc-kc">-</button>
-                      <span>
-                        <b>0</b>
-                      </span>
-                      <button className="btn-kc-kcee">+</button>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                ))}
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4 mt-5 mt-md-0">
               <div className="kc-card">
-                <div className="sum">
+                <div className="sum bg-light">
                   <h4>Cart Summary</h4>
                 </div>
                 <div className="total">
@@ -76,7 +97,18 @@ const CartItems = () => {
                     <h4>&#8358;{cartSubTotal()}</h4>
                   </div>
                   <div className="delivery">
-                    <p>Delivery Fees not included yet.</p>
+                    {cartSubTotal() < 300000 && (
+                      <p>Shipping Fees not included yet.</p>
+                    )}
+                    {cartSubTotal() >= 300000 ? (
+                      <small className="">
+                      Hurray! you're now qualified for free shipping (Lagos only)
+                      </small>
+                    ) : (
+                      <small className="bg-warning text-dark p-1 pb-1">
+                        Free shipping for order above <b className="text-secondary">&#8358;300,000</b> (Lagos only)
+                      </small>
+                    )}
                   </div>
                   <div></div>
                 </div>
@@ -106,7 +138,15 @@ const CartItems = () => {
               </div>
             </div>
           </div>
+          <div className="recently">
+            <RecentlyViewed limit={8} />
+          </div>
+          <div className="">
+          <CountDownTimer/>
+          </div>
         </div>
+        
+
       ) : (
         <CartEmpty />
       )}

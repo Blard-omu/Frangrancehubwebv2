@@ -367,6 +367,8 @@ const AllFragrance = () => {
                 {/* Accordion ends */}
               </div>
             </div>
+
+            
             <div className="m-controls-mobile">
               <OffCanvasButton
                 handleCheckboxChange={handleCheckboxChange}
@@ -380,6 +382,7 @@ const AllFragrance = () => {
                 <SortBy handleSort={handleSort} />
               </h3>
             </div>
+
             <div className="m-products">
               {loading ? (
                 Array.from({ length: 6 }).map((_, index) => (

@@ -2,7 +2,8 @@
     width: 23rem !important;
     /* display: flex; */
     align-items: center;
-    height: 70rem;
+    max-height: 70rem;
+    overflow-y: hidden;
     
 }
 .rpg-container{

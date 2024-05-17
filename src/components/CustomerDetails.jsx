@@ -9,6 +9,9 @@ import SideNav from "../components/nav/SideNav";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { ImBin2 } from "react-icons/im";
+import RecentlyViewed from "./RecentlyViewed";
+import CountDownTimer from "./CountDownTimer";
 
 const CustomerDetails = () => {
   const { cart, cartSubTotal, removeFromCart } = useCart();
@@ -17,8 +20,8 @@ const CustomerDetails = () => {
   const [loading, setLoading] = useState();
 
   const itemsIncart = cart.length ? cart.length : 0;
-  const shipping = 2000;
-  const total = cartSubTotal() + shipping;
+  const shipping = cart.length > 0 && cartSubTotal() < 300000 ? 2000 : 0;
+  const total = cart.length > 0 ? cartSubTotal() + shipping : 0;
   const paymentRef = true;
   const cartItems = cart.filter((item) => item._id);
 
@@ -46,166 +49,118 @@ const CustomerDetails = () => {
   return (
     <>
       <Menu />
+      <SideNav />
       <div className="buni">
-        <div className="heading text-dark mb-3">
+        <div className="text-dark p-1 bg-light mb-1">
           <h3>Customer Details</h3>
         </div>
-        <div className="case-1">
-          <div className="customer">
-            <div className="customer-form row mb-2 ">
-              <div className="form col-6">
-                <label>First Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Enter First Name"
-                />
+
+        <div className="cus-detail d-flex justify-content-between flex-column flex-md-row w-100">
+          <div className="det-form row">
+            <div className="col-12 col-md-6">
+              <label>First Name</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Enter First Name"
+              />
+            </div>
+            <div className="col-12 col-md-6">
+              <label>Last Name</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Enter Last Name"
+              />
+            </div>
+
+            <div className="col-12 col-md-6">
+              <label>Phone Number</label>
+              <input type="text" className="form-control" placeholder="+234" />
+            </div>
+            <div className="col-12 col-md-6 my-2">
+              <label>Phone 2 (Optional)</label>
+              <input type="text" className="form-control" placeholder="+234" />
+            </div>
+            <div className="col-12 my-2">
+              <label>Delivery Address</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Enter your email address"
+              />
+            </div>
+            <div className=" d-flex flex-column">
+              <label>Region</label>
+              <select className="form-select" id="region">
+                <option value="">Select Region</option>
+                <option value="">Africa</option>
+                <option value="">Asia</option>
+                <option value="">Europe</option>
+              </select>
+            </div>
+            <div className=" d-flex flex-column my-2">
+              <label>City</label>
+              <select className="form-select" id="city">
+                <option value="">Select City</option>
+                <option value="LAGOS">Lagos</option>
+                <option value="IBADAN">IBADAN</option>
+                <option value="">PORTHARCOURT</option>
+              </select>
+            </div>
+
+            {/* Delivery Options */}
+            <div className="case-2 mt-4">
+              <div className="heading">
+                <h3 className="text-dark">Delivery Options</h3>
               </div>
-              <div className="form col-6">
-                <label>Last Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Enter Last Name"
-                />
+              <div className="details">
+                <div className="delivery p-1">
+                  <input type="radio" name="door" value="Door Delivery" />
+                  <span className="ms-2">Door Delivery</span>
+                </div>
+                <div className="pick p-1">
+                  <input type="radio" name="door" value="Pick up" />{" "}
+                  <span className="ms-2">Pick up</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Payment Methods */}
+            <div className="case-3 mt-4">
+              <div className="heading">
+                <h3 className="text-dark">Select Payment Method</h3>
+              </div>
+              <div className="d-flex justify-content-between align-items-center col-12 col-md-6">
+                <div className="d-flex align-items-center w-100">
+                  <input type="radio" name="card" value="Pick up" />{" "}
+                  <span className="ms-2">Pay With Paypal</span>
+                </div>
+                <div
+                  className="d-flex justify-content-center align-items-center"
+                  style={{ width: "20px", height: "20px" }}
+                >
+                  <img src={paypal} alt="" className="w-100" />
+                </div>
               </div>
 
-              <div className="form col-6">
-                <label>Phone Number</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="+234"
-                />
-              </div>
-              <div className="form col-6">
-                <label>Phone 2 (Optional)</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="+234"
-                />
-              </div>
-              <div className="form">
-                <label>Delivery Address</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Enter your email address"
-                />
-              </div>
-              <div className="form col-6 d-flex flex-column">
-                <label>Region</label>
-                <select className="sect" id="region">
-                  <option value="">Select Region</option>
-                  <option value="">Africa</option>
-                  <option value="">Asia</option>
-                  <option value="">Europe</option>
-                </select>
-              </div>
-              <div className="form col-6 d-flex flex-column">
-                <label>City</label>
-                <select className="sect" id="city">
-                  <option value="">Select City</option>
-                  <option value="LAGOS">Lagos</option>
-                  <option value="IBADAN">IBADAN</option>
-                  <option value="">PORTHARCOURT</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div className="id d-none d-md-block">
-            <h3>Total Items({itemsIncart})</h3>
-            <div className="">
-              <table className="w-100">
-                <tbody>
-                  {cart?.length > 0 &&
-                    cart.map((product) => (
-                      <tr key={product._id}>
-                        <td>
-                          <img
-                            src={product.images[0].url}
-                            alt={product.name}
-                            style={{ width: "60px", height: "60px" }}
-                          />
-                        </td>
-                        <td>{product.name.slice(0, 25)}..</td>
-                        <td>&#8358;{product.price.toLocaleString()}</td>
-                        <td>
-                          <button
-                            className="btn btn-danger p-1"
-                            onClick={() => removeFromCart(product._id)}
-                            style={{ fontSize: ".8rem" }}
-                          >
-                            Delete
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-            </div>
-            <div className="id-1">
-              <p>
-                Subtotal <b> &#8358;{cartSubTotal()}</b>
-              </p>
-              <p>
-                Delivery Cost <b>&#8358;{shipping}</b>{" "}
-              </p>
-            </div>
-            <div className="id-2">
-              <p>
-                Total <b>&#8358;{total}</b>
-              </p>
-            </div>
-            <div className="firm">
-              <button
-                to="/order"
-                className="btn btn-dark w-50"
-                onClick={handlePay}
-              >
-                {loading ? "Loading..." : "Confirm Order"}
-              </button>
-              <h6>(complete the steps in order to proceed)</h6>
-            </div>
-          </div>
-        </div>
-
-        <div className="case-2">
-          <div className="heading">
-            <h3>Delivery Details</h3>
-          </div>
-          <div className="details">
-            <div className="delivery">
-              <input type="radio" name="door" value="Door Delivery" />
-              <span className="ms-2">Door Delivery</span>
-            </div>
-            <div className="pick">
-              <input type="radio" name="door" value="Pick up" />{" "}
-              <span className="ms-2">Pick up</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="case-3">
-          <div className="heading">
-            <h3>Select Payment Method</h3>
-          </div>
-          <div className="hero">
-            <div className="icons">
-              <div className="icon-1 d-flex">
-                <div className="details">
+              <div className="icon-1 w-100 d-flex justify-content-between align-items-center">
+                <div className="credit-card">
                   <input type="radio" name="card" value="Door Delivery" />
                   <span className="ms-2">Pay With Credit Card</span>
                 </div>
-                <div className="minus d-flex justify-content-around align-items-center me-2">
-                  <img src={visa} alt="" className="me-2" />
-                  <img src={master} alt="" />
+                <div className="d-flex justify-content-around justify-content-between align-items-center">
+                  <div className="" style={{ width: "30px", height: "30px" }}>
+                    <img src={visa} alt="" className="w-100" />
+                  </div>
+                  <div className="" style={{ width: "30px", height: "30px" }}>
+                    <img src={master} alt="" className="w-100" />
+                  </div>
                 </div>
               </div>
-              <div className="payment-form row mb-2 ">
-                <div className="form">
+
+              <div className="payment-form row mb-2 p-0 ">
+                <div className="col-12 col-lg-6">
                   <label>Name On Card</label>
                   <input
                     type="text"
@@ -213,7 +168,7 @@ const CustomerDetails = () => {
                     placeholder="Enter Name on Card"
                   />
                 </div>
-                <div className="form">
+                <div className="col-12 col-md-6">
                   <label>Card Number</label>
                   <input
                     type="text"
@@ -221,7 +176,7 @@ const CustomerDetails = () => {
                     placeholder="Enter your card number"
                   />
                 </div>
-                <div className="form col-6">
+                <div className="col-12 col-md-6 my-2">
                   <label>Expiring Date</label>
                   <input
                     type="text"
@@ -229,48 +184,152 @@ const CustomerDetails = () => {
                     placeholder="DD/MM/YY"
                   />
                 </div>
-                <div className="form col-6">
+                <div className="col-12 col-md-6">
                   <label>CVV</label>
                   <input type="text" className="form-control" placeholder="" />
                 </div>
               </div>
             </div>
-            <div className="pay d-flex">
-              <div className="details">
-                <input type="radio" name="card" value="Pick up" />{" "}
-                <span className="ms-2">Pay With Paypal</span>
+          </div>
+
+          <div className="summary1">
+            {/* Items desktop */}
+            <div className=" d-none d-md-block w-100">
+              <h3 className="bg-light">Total Items({itemsIncart})</h3>
+              <div className="w-100">
+                <table className="table table-hover w-100">
+                  <tbody>
+                    {cart?.length > 0 &&
+                      cart.map((product) => (
+                        <tr className="" key={product._id}>
+                          <td>
+                            <img
+                              src={product.images[0].url}
+                              alt={product.name}
+                              style={{ width: "60px", height: "60px" }}
+                            />
+                          </td>
+                          <td>{product.name.slice(0, 20)}..</td>
+                          <td>
+                            &#8358;{product.price.toLocaleString()}{" "}
+                            <small className="text-secondary">
+                              {" "}
+                              x {product.addedQty}
+                            </small>
+                          </td>{" "}
+                          <td>
+                            <span
+                              className="text-danger p-1"
+                              onClick={() => removeFromCart(product._id)}
+                              style={{ fontSize: "1rem" }}
+                            >
+                              <ImBin2 />
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
               </div>
-              <div className="plus">
-                <img src={paypal} alt="" />
+              <div className="id-1 mt-4">
+                <p>
+                  Subtotal <b> &#8358;{cartSubTotal()}</b>
+                </p>
+                <p>
+                  Shipping fee <b>&#8358; {shipping}</b>
+                </p>
+              </div>
+              <div className="id-2">
+                <p>
+                  Total <b>&#8358;{total}</b>
+                </p>
+              </div>
+              <div className="firm">
+                <button
+                  to="/order"
+                  className="btn btn-dark w-50"
+                  onClick={handlePay}
+                >
+                  {loading ? "Loading..." : "Confirm Order"}
+                </button>
+                <h6>(complete the steps in order to proceed)</h6>
+              </div>
+            </div>
+
+            {/* Items mobile */}
+            <div className="d-md-none w-100">
+              <h3 className="bg-light">Total Items({itemsIncart})</h3>
+              <div className="w-100">
+                <table className="table table-hover w-100">
+                  <tbody>
+                    {cart?.length > 0 &&
+                      cart.map((product) => (
+                        <tr className="" key={product._id}>
+                          <td>
+                            <img
+                              src={product.images[0].url}
+                              alt={product.name}
+                              style={{ width: "30px", height: "30px" }}
+                            />
+                          </td>
+                          <td style={{ fontSize: ".6em" }}>
+                            {product.name.slice(0, 20)}..
+                          </td>
+                          <td>
+                            &#8358;{product.price.toLocaleString()}{" "}
+                            <small className="text-secondary">
+                              {" "}
+                              x {product.addedQty}
+                            </small>
+                          </td>
+                          <td>
+                            <span
+                              className="text-danger p-1"
+                              onClick={() => removeFromCart(product._id)}
+                              style={{ fontSize: "1rem" }}
+                            >
+                              <ImBin2 />
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="id-1 mt-4">
+                <p>
+                  Subtotal <b> &#8358;{cartSubTotal()}</b>
+                </p>
+                <p>
+                  Shipping fee <b>&#8358; {shipping}</b>
+                </p>
+              </div>
+              <div className="id-2">
+                <p>
+                  Total <b>&#8358;{total}</b>
+                </p>
+              </div>
+              <div className="firm">
+                <button
+                  to="/order"
+                  className="btn btn-dark w-50"
+                  onClick={handlePay}
+                >
+                  {loading ? "Loading..." : "Confirm Order"}
+                </button>
+                <h6>(complete the steps in order to proceed)</h6>
               </div>
             </div>
           </div>
         </div>
-        <div className="total-m d-lg-none">
-          <h3>Total Items({itemsIncart})</h3>
-          <div className="total-1">
-            <p>
-              Subtotal <b> &#8358;{cartSubTotal()}</b>
-            </p>
-            <p>
-              Delivery Cost <b>&#8358;{shipping}</b>{" "}
-            </p>
+        <div className="recently">
+            <RecentlyViewed limit={8}/>
           </div>
-          <div className="total-2">
-            <p>
-              Total <b>&#8358;{total}</b>
-            </p>
+          <div className="">
+          <CountDownTimer/>
           </div>
-          <div className="firm">
-            <div className="firm-botn">
-              <a className="" href="" id="">
-                Confirm order
-              </a>
-            </div>
-            <h6>(complete the steps in order to proceed)</h6>
-          </div>
-        </div>
       </div>
+      
     </>
   );
 };

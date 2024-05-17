@@ -169,7 +169,9 @@ const UserProfile = () => {
                 accept="image/*"
                 onChange={handleImageChange}
               />
-              <button className="btn btn-primary m-2 p-2">Submit</button>
+              <div className="my-2">
+              <button className="btn btn-primary m-2 p-2">Update profile</button>
+              </div>
             </form>
           </div>
         </div>

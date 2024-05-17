@@ -5,11 +5,14 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import ProductCardLoading from "./ProductCardLoadingM";
+import { useCart } from "../contexts/Cart";
+import { BsFillCartCheckFill } from "react-icons/bs";
 
 const CountDownTimer = () => {
   const [timeRemaining, setTimeRemaining] = useState(calculateTimeRemaining());
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState();
+  const { cart, addToCart } = useCart();
 
   function calculateTimeRemaining() {
     const now = new Date();
@@ -40,12 +43,12 @@ const CountDownTimer = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true)
+        setLoading(true);
         const response = await axios.get(`/product/all`);
         setProduct(response?.data?.products);
       } catch (error) {
         console.error("Error fetching data:", error);
-      }finally {
+      } finally {
         setLoading(false); // Set loading to false regardless of success or error
       }
       // console.log(product);
@@ -54,6 +57,11 @@ const CountDownTimer = () => {
   }, []);
 
   const flashProduct = product?.slice(4, 8);
+
+  const handleAddToCart = (product) => (event) => {
+    event.stopPropagation();
+    addToCart(product);
+  };
 
   return (
     <>
@@ -82,34 +90,52 @@ const CountDownTimer = () => {
                 let Price = price.toLocaleString(undefined, {
                   minimumFractionDigits: 2,
                 });
+                const isAdded = cart.some(
+                  (item) => item._id === _id && item.isAdded
+                );
                 return (
                   <>
-                    <Link className="link" to={`/detail/${product._id}`}>
-                      <div key={_id}>
-                        <div className="m-card-Container discount-relative" key={_id}>
-                          <div className="m-image">
-                            <img src={images[0].url} />
+                    <div
+                      className="m-card-Container discount-relative"
+                      key={_id}
+                    >
+                      <div className="m-image">
+                        <Link className="" to={`/detail/${product._id}`}>
+                          <img src={images[0].url} alt={name} />
+                        </Link>
+                      </div>
+                      <p className="discount">-20%</p>
+                      <div className="m-card-info">
+                        <Link
+                          className="text-decoration-none"
+                          to={`/detail/${product._id}`}
+                        >
+                          <div className="m-card-text">
+                            <h4>{name}</h4>
+                            <p>{description}</p>
+                            <h2>&#x20A6;{Price}</h2>
                           </div>
-                          <p className="discount">-20%</p>
-                          <div className="m-card-info">
-                            <div className="m-card-text">
-                              <h4>{name}</h4>
-                              <p>{description}</p>
-                              <h2>&#x20A6;{Price}</h2>
-                            </div>
-                            <div className="m-card-btn">
-                              {isAvailable ? (
-                                <button>Add to cart</button>
-                              ) : (
-                                <button className="not-ava" disabled>
-                                  Sold Out
-                                </button>
-                              )}
-                            </div>
-                          </div>
+                        </Link>
+                        <div className="m-card-btn">
+                          {isAvailable ? (
+                            <button
+                              className={
+                                isAdded ? `bg-secondary text-light` : ""
+                              }
+                              onClick={handleAddToCart(product)}
+                              disabled={isAdded}
+                            >
+                              {isAdded ? `Added ` : "Add to cart"}{" "}
+                              {isAdded && <BsFillCartCheckFill />}
+                            </button>
+                          ) : (
+                            <button className="not-ava" disabled>
+                              Sold Out
+                            </button>
+                          )}
                         </div>
                       </div>
-                    </Link>
+                    </div>
                   </>
                 );
               })}

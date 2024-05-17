@@ -20,13 +20,14 @@ import { useCart } from "../../contexts/Cart";
 
 function Menu() {
   const { auth, logout } = useAuth();
-  const { cart } = useCart();
+  const { cart, clearCart } = useCart();
 
   const navigate = useNavigate();
 
 
   const handleLogout = () => {
     logout();
+    clearCart();
     navigate("/");
   };
 

@@ -2,7 +2,8 @@ import React from "react";
 import order from "../assets/images/order.png";
 import "../css/Chart.css";
 import { Link } from "react-router-dom";
-
+import RecentlyViewed from "../components/RecentlyViewed";
+import CountDownTimer from "../components/CountDownTimer";
 const CartEmpty = () => {
   return (
     <>
@@ -24,6 +25,12 @@ const CartEmpty = () => {
             </Link>
           </div>
         </>
+      </div>
+      <div className="recently">
+        <RecentlyViewed limit={8} />
+      </div>
+      <div className="">
+        <CountDownTimer />
       </div>
     </>
   );

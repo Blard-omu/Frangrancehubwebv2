@@ -265,13 +265,7 @@
     width: 70%;
   }
 
-  .arrival-filter-div {
-    /* width: 30%;
-    margin-left: 20px;
-    height: 100%;
-    border-right: 1px solid rgb(91, 90, 90) !important; */
-    /* border-radius: 10px !important; */
-  }
+  
 
   .arrival-main-div {
     width: 100%;
@@ -313,10 +307,10 @@
   }
 
   .arrival-products-div-desk {
-    width: 80%;
-    /* border: 1px solid rgb(177, 24, 24) !important; */
+    width: 90%;
     height: 100%;
-    /* justify-content: space-between; */
+    display: flex;
+    justify-content: space-evenly;
     /* margin-left: 50px; */
   }
 
@@ -328,30 +322,7 @@
     width: 90%;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    /* top right bottom left */
-    /* margin: auto; */
-    /* border: 1px solid red!important; */
     margin: 0px 0px 50px 20px;
   }
 }
 
-/* .breadcrumb-item + .breadcrumb-item::before {
-    content: "›";
-    padding: 0 5px;
-} */
-/* .breadcrumb-item {
-    + .breadcrumb-item {
-  
-      &::before {
-        float: left; 
-        
-        
-        content:"*>";
-      }
-    }
-  
-    &.active {
-      color: black;
-    }
-  } */

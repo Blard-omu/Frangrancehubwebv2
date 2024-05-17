@@ -16,7 +16,7 @@ import { useCart } from "../../contexts/Cart";
 function SideNav({ name, ...props }) {
   const [show, setShow] = useState(false);
   const { auth, logout } = useAuth();
-  const { cart } = useCart();
+  const { cart, clearCart } = useCart();
   const navigate = useNavigate();
 
 
@@ -27,6 +27,7 @@ function SideNav({ name, ...props }) {
   const handleLogout = () => {
     logout();
     navigate("/");
+    clearCart();
   };
 
   return (
