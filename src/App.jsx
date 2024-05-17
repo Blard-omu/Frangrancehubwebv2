@@ -26,6 +26,7 @@ import AdminProductUpdate from "./pages/admin/AdminProductUpdate";
 import AdminOrders from "./pages/admin/AdminOrders";
 import UserProfile from "./pages/user/UserProfile";
 import UserOrders from "./pages/user/UserOrders";
+import PageNotFound from "./pages/PageNotFound";
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/*" element={<PageNotFound/>} />
           {/* Protected Routes */}
           <Route path="/dashboard" element={<PrivateRoutes />}>
             <Route path="user" element={<UserDashboard />} />
