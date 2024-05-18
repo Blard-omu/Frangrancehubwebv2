@@ -128,7 +128,8 @@
 @media (min-width: 321px) and (max-width: 767px) {
     .m-card-Container{
         border: 1px solid #d7d7d7;
-        max-width: 170px;
+        width: 170px;
+        min-width: 170px;
         height: 270px;
         border-radius: 4px;
         display: flex;
