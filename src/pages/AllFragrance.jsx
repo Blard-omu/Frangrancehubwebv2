@@ -425,46 +425,32 @@ import ProductCardLoading from "../components/ProductCardLoadingM";
 import moment from "moment";
 
 const AllFragrance = () => {
-  //general data
+  // general data
   const [fetchProduct, setFetchProduct] = useState([]);
   const [currentProducts, setCurrentProducts] = useState([]);
-  //
-  //pagination
+  const [paginatedProducts, setPaginatedProducts] = useState([]);
+  // pagination
   const [currentPage, setCurrentPage] = useState(1);
-  //gender
+  // filters
   const [selectedGender, setSelectedGender] = useState([]);
-  //brand
   const [selectedBrand, setSelectedBrand] = useState([]);
-  //Fragrance
   const [selectedFragranceTypes, setSelectedFragranceTypes] = useState([]);
-  //Scent
   const [selectedScentType, setSelectedScentType] = useState([]);
-  //Price
   const [selectedPrice, setSelectedPrice] = useState([]);
-  //Availability
   const [selectedAvailability, setSelectedAvailability] = useState(null);
-
-  //Showing the selected in the page
+  // selected filters
   const [selectedFilters, setSelectedFilters] = useState([]);
-  const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState(true);
 
   const shuffle = (array) => {
-    let currentIndex = array.length,
-      temporaryValue,
-      randomIndex;
-
-    // While there remain elements to shuffle...
+    let currentIndex = array.length, temporaryValue, randomIndex;
     while (currentIndex !== 0) {
-      // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
-
-      // And swap it with the current element.
       temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
     }
-
     return array;
   };
 
@@ -477,7 +463,6 @@ const AllFragrance = () => {
       );
 
       const shuffledProducts = shuffle(data?.products);
-
       setFetchProduct(shuffledProducts);
       setCurrentProducts(shuffledProducts);
       console.log("Fetched products:", data?.products);
@@ -494,7 +479,6 @@ const AllFragrance = () => {
 
   const handleSelectedFilter = (filter) => {
     setCurrentPage(1);
-
     setSelectedFilters((prevFilters) => {
       if (prevFilters.includes(filter)) {
         return prevFilters.filter((f) => f !== filter);
@@ -535,19 +519,26 @@ const AllFragrance = () => {
     }
   }, []);
 
-  const productsPerPage = 15;
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const paginate = currentProducts.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct
-  );
+  useEffect(() => {
+    const productsPerPage = 15;
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const newPaginatedProducts = currentProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+
+    setPaginatedProducts(newPaginatedProducts);
+    console.log("Paginated Products:", newPaginatedProducts);
+  }, [currentProducts, currentPage]);
 
   useEffect(() => {
     let filteredProducts = fetchProduct;
-
-    console.log("Selected Gender:", selectedGender);
-    console.log("Selected Brand:", selectedBrand);
+    console.log("Filtering products with filters:", {
+      selectedGender,
+      selectedBrand,
+      selectedFragranceTypes,
+      selectedScentType,
+      selectedPrice,
+      selectedAvailability,
+    });
 
     if (selectedGender.length > 0) {
       filteredProducts = filteredProducts.filter((product) =>
@@ -586,15 +577,9 @@ const AllFragrance = () => {
     }
 
     if (selectedAvailability !== null) {
-      if (selectedAvailability === "true") {
-        filteredProducts = filteredProducts.filter(
-          (product) => product.isAvailable === true
-        );
-      } else {
-        filteredProducts = filteredProducts.filter(
-          (product) => product.isAvailable === false
-        );
-      }
+      filteredProducts = filteredProducts.filter(
+        (product) => product.isAvailable === (selectedAvailability === "true")
+      );
     }
 
     setCurrentProducts(filteredProducts);
@@ -721,9 +706,8 @@ const AllFragrance = () => {
     return array.slice().reverse();
   };
 
-  const reversedProducts = reverseArray(paginate);
+  const reversedProducts = reverseArray(paginatedProducts);
 
-  console.log("paginate:", paginate);
   console.log("Current Products:", currentProducts);
   console.log("Fetch Product:", fetchProduct);
 
@@ -736,7 +720,7 @@ const AllFragrance = () => {
             <div className="title-left">
               <h4>All Featured Fragrance</h4>
               <p>
-                Showing {productsPerPage} of {currentProducts.length} Products
+                Showing {paginatedProducts.length} of {currentProducts.length} Products
               </p>
             </div>
             <div className="title-right">
@@ -785,8 +769,8 @@ const AllFragrance = () => {
                 Array.from({ length: 6 }).map((_, index) => (
                   <ProductCardLoading key={index} />
                 ))
-              ) : currentProducts?.length > 0 ? (
-                paginate.map((product) => (
+              ) : paginatedProducts?.length > 0 ? (
+                paginatedProducts.map((product) => (
                   <ProductCard product={product} key={product._id} />
                 ))
               ) : (
@@ -798,7 +782,7 @@ const AllFragrance = () => {
         <div className="m-pagination">
           <Pagination
             totalItems={currentProducts.length}
-            itemsPerPage={productsPerPage}
+            itemsPerPage={15}
             onPageChange={handlePageChange}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
