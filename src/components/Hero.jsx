@@ -10,7 +10,6 @@ import cardIcon from "../assets/icons/Online payment.png";
 import badgeIcon from "../assets/icons/Badge.png";
 import { Link } from "react-router-dom";
 
-
 function Hero() {
   const [index, setIndex] = useState(0);
 
@@ -20,10 +19,15 @@ function Hero() {
 
   return (
     <div className="hero">
-      <Carousel className="main-pb" activeIndex={index} onSelect={handleSelect} controls={false}>
+      <Carousel
+        className="main-pb"
+        activeIndex={index}
+        onSelect={handleSelect}
+        controls={false}
+      >
         <Carousel.Item className="">
           <div className="img-pb">
-              <img src={img3} text="First slide" width="100%" height="450px" />
+            <img src={img3} text="First slide" width="100%" height="450px" />
           </div>
           <div className="main-b">
             <Carousel.Caption>
@@ -35,15 +39,18 @@ function Hero() {
                 </p>
               </div>
 
-              <Link to='/all-fragrances' style={{textDecoration: "none"}}>
-              <button type="button" className="btn-pb btn-dark btn-p">
-                Shop Now
-              </button>
-              <button type="button" className="btn-mobile btn-dark ">
-                Shop Now
-              </button>
+              <div className="hero-btn">
+              <Link to="/all-fragrances" style={{ textDecoration: "none" }}>
+                <button type="button" className="btn-pb btn-dark btn-p">
+                  Shop Now
+                </button>
               </Link>
-              
+              </div>
+              <Link to="/all-fragrances" style={{ textDecoration: "none" }}>
+                <button type="button" className="btn-mobile d-md-none btn-dark ">
+                  Shop Now
+                </button>
+              </Link>
             </Carousel.Caption>
           </div>
         </Carousel.Item>
@@ -51,7 +58,7 @@ function Hero() {
           <div className="img-pb">
             <img src={img2} text="Second slide" width="100%" height="450px" />
           </div>
-          
+
           <Carousel.Caption>
             <div className="text-body2">
               <h1>Sensual & Seductive</h1>
@@ -60,22 +67,21 @@ function Hero() {
               </p>
             </div>
 
-            <Link to="/all-fragrances" style={{textDecoration: "none"}}>
-            <button type="button" className="btn-pb btn-dark">
-              Shop Now
-            </button>
-            <button type="button" className="btn-mobile btn-dark ">
-              Shop Now
-            </button>
+            <Link to="/all-fragrances" style={{ textDecoration: "none" }}>
+              <button type="button" className="btn-pb btn-dark">
+                Shop Now
+              </button>
+              <button type="button" className="btn-mobile btn-dark ">
+                Shop Now
+              </button>
             </Link>
-            
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <div className="img-pb">
-              <img src={img3} text="Third slide" width="100%" height="450px" />
+            <img src={img3} text="Third slide" width="100%" height="450px" />
           </div>
-          
+
           <Carousel.Caption>
             <div className="text-body3">
               <h1>Fresh & Crisp</h1>
@@ -85,22 +91,21 @@ function Hero() {
               </p>
             </div>
 
-            <Link to="/all-fragrances" style={{textDecoration: "none"}}>
-            <button type="button" className="btn-pb btn-dark">
-              Shop Now
-            </button>
-            <button type="button" className="btn-mobile btn-dark ">
-              Shop Now
-            </button>
+            <Link to="/all-fragrances" style={{ textDecoration: "none" }}>
+              <button type="button" className="btn-pb btn-dark">
+                Shop Now
+              </button>
+              <button type="button" className="btn-mobile btn-dark ">
+                Shop Now
+              </button>
             </Link>
-            
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <div className="img-pb">
-              <img src={img4} text="Fourth slide" width="100%" height="450px" />
+            <img src={img4} text="Fourth slide" width="100%" height="450px" />
           </div>
-          
+
           <Carousel.Caption>
             <div className="text-body4">
               <h1>Modern Chic</h1>
@@ -109,15 +114,14 @@ function Hero() {
               </p>
             </div>
 
-            <Link to="/all-fragrances" style={{textDecoration: "none"}}>
-            <button type="button" className="btn-pb btn-dark">
-              Shop Now
-            </button>
-            <button type="button" className="btn-mobile btn-dark ">
-              Shop Now
-            </button>
+            <Link to="/all-fragrances" style={{ textDecoration: "none" }}>
+              <button type="button" className="btn-pb btn-dark">
+                Shop Now
+              </button>
+              <button type="button" className="btn-mobile btn-dark ">
+                Shop Now
+              </button>
             </Link>
-            
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
