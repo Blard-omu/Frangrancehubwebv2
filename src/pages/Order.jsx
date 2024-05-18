@@ -11,8 +11,7 @@ const { auth } = useAuth();
 
   return (
     <>
-      <Menu />
-      <SideNav />
+     
       <div className=" d-flex justify-content-center align-items-center top-10 z-2 w-100 pt-5 ">
         <FaCheckCircle
           size="10%"

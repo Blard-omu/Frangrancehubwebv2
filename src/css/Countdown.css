@@ -36,11 +36,12 @@
 .discount{
     position: absolute;
     background: #FFDBDB;
-    padding: 5px 10px;
-    color: red;
+    padding: 5px;
+    color: rgb(153, 7, 7);
     right: 5px;
-    top: 20px;
+    top: 10px;
     border-radius: 2px;
+    font-size: .8rem;
 }
 
 @media (max-width: 786px) {
@@ -66,6 +67,18 @@
     .flash-header > :last-child{
         font-size: 12px;
     }
+    .discount{
+        position: absolute;
+        background: #FFDBDB;
+        padding: 2px;
+        color: red;
+        right: 5px;
+        top: 5px;
+        border-radius: 2px;
+        font-size: .6rem;
+        text-align: center;
+    }
+    
 }
 
 @media (max-width: 1100px) {

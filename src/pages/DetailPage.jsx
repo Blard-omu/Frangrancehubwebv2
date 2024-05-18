@@ -6,7 +6,6 @@ import YouTube from "../components/YouTube";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../css/DetailPage.css";
-import Footer from "../components/Footer";
 import SideNav from "../components/nav/SideNav";
 import Menu from "../components/nav/NavBar";
 import DetailCardLoading from "../components/DetailLoading";
@@ -15,29 +14,29 @@ import RecentlyViewed from "../components/RecentlyViewed";
 const DetailPage = () => {
   const { productId } = useParams();
   const [productG, setProductG] = useState(null);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true)
+      setLoading(true);
       try {
         const response = await axios.get(`/product/${productId}`);
         // console.log("Fetched data:", response.data);
         setProductG(response.data.product);
 
         // Store the viewed product in local storage
-        const recentlyViewed = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
+        const recentlyViewed =
+          JSON.parse(localStorage.getItem("recentlyViewed")) || [];
         if (!recentlyViewed.includes(productId)) {
           recentlyViewed.unshift(productId);
           const maxLength = window.innerWidth <= 1024 ? 8 : 4;
           const updatedList = recentlyViewed.slice(0, maxLength);
-          localStorage.setItem('recentlyViewed', JSON.stringify(updatedList));
+          localStorage.setItem("recentlyViewed", JSON.stringify(updatedList));
         }
       } catch (error) {
         console.error("Error fetching data:", error);
-      }
-      finally{
-        setLoading(false)
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -45,16 +44,13 @@ const DetailPage = () => {
 
   return (
     <>
-      <Menu />
-      <SideNav />
       <div className="all-details d-flex flex-column justify-content-center ">
         <>
           <div className="mb-4 detail-card ">
             {loading ? (
               <DetailCardLoading />
-            ) : productG && (
-
-              <DetailCard product={productG} />
+            ) : (
+              productG && <DetailCard product={productG} />
             )}
           </div>
 
@@ -80,7 +76,6 @@ const DetailPage = () => {
           </div>
         </>
       </div>
-      <Footer />
     </>
   );
 };

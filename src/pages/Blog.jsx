@@ -1,18 +1,12 @@
-import React from "react";
-import Jumbotron from "../components/cards/Jumbotron";
-import Footer from "../components/Footer";
-import Menu from "../components/nav/NavBar";
-import SideNav from "../components/nav/SideNav";
+import React from 'react'
+import Jumbotron from '../components/cards/Jumbotron'
 
 const Blog = () => {
   return (
-    <>
-      <Menu />
-      <SideNav />
-      <Jumbotron title="COMING SOON..." subTitle="Blog Page" />
-      <Footer />
-    </>
-  );
-};
+    <div className='mb-5'>
+        <Jumbotron title= ' COMING SOON...' subTitle='Blog Page'/>
+    </div>
+  )
+}
 
-export default Blog;
+export default Blog

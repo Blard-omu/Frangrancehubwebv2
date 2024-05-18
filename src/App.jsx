@@ -27,13 +27,13 @@ import AdminOrders from "./pages/admin/AdminOrders";
 import UserProfile from "./pages/user/UserProfile";
 import UserOrders from "./pages/user/UserOrders";
 import PageNotFound from "./pages/PageNotFound";
+import Layout from "./components/Layout";
 
 
 function App() {
   const { PrivateRoutes, AdminRoutes } = useAuth();
   return (
-    <>
-      <Router>
+    <Layout>
         <ToastContainer />
         {/* <Breadcrumbs/>   */}
         <ScrollToTop />
@@ -77,8 +77,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
         </Routes>
-      </Router>
-    </>
+    </Layout>
   );
 }
 

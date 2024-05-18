@@ -78,7 +78,7 @@ const AllfragranceComponent = () => {
                           <img src={images[0].url} alt={name} />
                         </Link>
                       </div>
-                      <div className="m-card-info">
+                      <div className="m-card-info" key={product._id}>
                         <Link
                           className="text-decoration-none"
                           to={`/detail/${product._id}`}

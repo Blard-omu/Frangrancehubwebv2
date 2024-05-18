@@ -327,8 +327,6 @@ const AllFragrance = () => {
 
   return (
     <>
-      <Menu />
-      <SideNav />
       <Breadcrumbs />
       <div className="m-section">
         <div className="m-main">
@@ -408,7 +406,6 @@ const AllFragrance = () => {
           />
         </div>
       </div>
-      <Footer />
     </>
   );
 };

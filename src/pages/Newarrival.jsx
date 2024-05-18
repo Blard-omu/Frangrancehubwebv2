@@ -294,8 +294,7 @@ const Newarrival = () => {
 
   return (
     <>
-      <Menu />
-      <SideNav />
+      
       <div className="arrival-desk-div ">
         <div className="arrival-top-div-desk ">
           <div className="d-none d-md-block d-lg-block ms-md-4 ms-lg-4">
@@ -453,7 +452,6 @@ const Newarrival = () => {
             <div className="my-5">
               <RecentlyViewed/>
             </div>
-      <Footer />
     </>
   );
 };

@@ -7,6 +7,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { AuthProvider } from './contexts/Auth';
 import { CartProvider } from './contexts/Cart.jsx';
 import { SearchProvider } from './contexts/Search.jsx';
+import { BrowserRouter as Router} from "react-router-dom";
+
+
 
 
 
@@ -16,7 +19,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <AuthProvider>
     <SearchProvider>
         <CartProvider>
+          <Router>
           <App />
+          </Router>
         </CartProvider>
       </SearchProvider>
     </AuthProvider>

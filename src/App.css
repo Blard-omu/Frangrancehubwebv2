@@ -9,4 +9,19 @@
   --off-white: aliceblue !important;
 }
 
+@media (min-width: 1660px){
+  
+  .layout-wrapper{
+   width: 100%;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  .layout-inner{
+    max-width: 1440px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
 

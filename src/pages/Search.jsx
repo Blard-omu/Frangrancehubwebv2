@@ -11,8 +11,7 @@ export default function Search() {
 
   return (
     <>
-      <Menu />
-      <SideNav />
+      
       <Jumbotron
         title="Search results"
         subTitle={
@@ -33,7 +32,6 @@ export default function Search() {
           ))}
         </div>
       </div>
-      <Footer/>
     </>
   );
 }

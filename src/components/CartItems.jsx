@@ -20,8 +20,6 @@ const CartItems = () => {
 
   return (
     <>
-      <Menu />
-      <SideNav />
       {cart?.length > 0 ? (
         <div
           className=" container-fluid"
@@ -150,7 +148,7 @@ const CartItems = () => {
       ) : (
         <CartEmpty />
       )}
-      <Footer />
+      
     </>
   );
 };

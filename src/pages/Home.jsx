@@ -13,10 +13,6 @@ import BestSeller from "../components/BestSeller";
 const Home = () => {
   return (
     <>
-      <Menu />
-      <div>
-      <SideNav />
-      </div>
       <Hero />
       <BestSeller/>
       <Brands />
@@ -25,7 +21,6 @@ const Home = () => {
       <AllfragranceComponent/>
       <Testimonies />
       <BlogCard />
-      <Footer />
     </>
   );
 };
