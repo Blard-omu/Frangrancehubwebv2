@@ -6,9 +6,6 @@ import Pagination from "../components/PaginationM";
 import { BiSort } from "react-icons/bi";
 import OffCanvasButton from "../components/FilterbyM";
 import Breadcrumbs from "../components/NABreadcCumbs";
-import Footer from "../components/Footer";
-import SideNav from "../components/nav/SideNav";
-import Menu from "../components/nav/NavBar";
 import ShowingAllfilter from "../components/ShowingAllfilter";
 import SortBy from "../components/SortBy";
 import axios from "axios";
@@ -325,6 +322,7 @@ const AllFragrance = () => {
   };
   const reversedProducts = reverseArray(paginate);
 console.log("paginate:", paginate);
+console.log("Current Product", currentProducts);
   return (
     <>
       <Breadcrumbs />
@@ -386,7 +384,7 @@ console.log("paginate:", paginate);
                 Array.from({ length: 6 }).map((_, index) => (
                   <ProductCardLoading key={index} />
                 ))
-              ) : currentProducts.length > 0 ? (
+              ) : currentProducts?.length > 0 ? (
                 paginate.map((product) => (
                   <ProductCard product={product} key={product._id} />
                 ))
