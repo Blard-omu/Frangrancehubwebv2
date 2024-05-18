@@ -14,7 +14,9 @@ const Home = () => {
   return (
     <>
       <Menu />
+      <div>
       <SideNav />
+      </div>
       <Hero />
       <BestSeller/>
       <Brands />

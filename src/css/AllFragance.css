@@ -152,6 +152,9 @@
         align-items: center;
         padding: 0px 20px;
         margin-bottom: 20px;
+        position: sticky;
+        top: 55px;
+        background-color: white;
     }
     .m-controls-mobile h3{
         text-align: center;
@@ -221,6 +224,9 @@
         align-items: center;
         padding: 0px 20px;
         margin-bottom: 20px;
+        position: sticky;
+        top: 55px;
+        background-color: white;
     }
     .m-controls-mobile h3{
         text-align: center;
@@ -290,6 +296,9 @@
         align-items: center;
         padding: 0px 20px;
         margin-bottom: 20px;
+        position: sticky;
+        top: 55px;
+        background-color: white;
     }
     .m-controls-mobile h3{
         text-align: center;
@@ -366,6 +375,9 @@
         align-items: center;
         padding: 0px 5%;
         margin-bottom: 20px;
+        position: sticky;
+        top: 160px;
+        background-color: white;
     }
     .m-controls-mobile h3{
         text-align: center;
