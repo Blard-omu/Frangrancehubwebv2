@@ -82,9 +82,8 @@
 @media (min-width: 320px) and (max-width: 768px) {
   .arrival {
     height: 60px;
-    position:sticky;
-    top:55px;
-    z-index:999999;
+    position: sticky;
+    top: 55px;
     background-color: white;
     /* border: 1px solid blue; */
   }
@@ -197,32 +196,21 @@
     justify-content: center;
     align-items: center;
     
-   
   }
   .arrival-top-div-mob {
-    /* border: 2px solid rgb(208, 207, 207); */
     height: 60px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border: 1px solid rgb(208, 207, 207);
-    height: 45px;
-    /* width: 24.3rem; */
-    /* margin-left: 0px; */
-    position: sticky;
-    top: 55px;
-    background-color: white;
-    z-index: 999;
-    /* border: 1px solid blue; */
+    height: 70px;
   }
   .arrival {
-    height: 60px;
-    position:sticky;
-    top:150px;
-    z-index:9000;
+    height: 70px;
+    position: sticky;
+    top: 160px;
     background-color: white;
-    /* border: 1px solid blue; */
   }
   .offcanvas-menu {
     position: fixed;
