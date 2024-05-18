@@ -324,7 +324,7 @@ const AllFragrance = () => {
     return array.slice().reverse();
   };
   const reversedProducts = reverseArray(paginate);
-
+console.log("paginate:", paginate);
   return (
     <>
       <Breadcrumbs />
