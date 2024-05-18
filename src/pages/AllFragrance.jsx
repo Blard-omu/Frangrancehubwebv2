@@ -519,14 +519,22 @@ const AllFragrance = () => {
     }
   }, []);
 
-  useEffect(() => {
+  const updatePaginatedProducts = () => {
     const productsPerPage = 15;
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const newPaginatedProducts = currentProducts.slice(indexOfFirstProduct, indexOfLastProduct);
-
+  
     setPaginatedProducts(newPaginatedProducts);
     console.log("Paginated Products:", newPaginatedProducts);
+  };
+
+  useEffect(() => {
+    updatePaginatedProducts();
+  }, []);
+  
+  useEffect(() => {
+    updatePaginatedProducts();
   }, [currentProducts, currentPage]);
 
   useEffect(() => {
@@ -591,6 +599,9 @@ const AllFragrance = () => {
     selectedPrice,
     selectedAvailability,
   ]);
+
+
+
 
   const handleCheckboxChange = (event, value, category) => {
     const isChecked = event.target.checked;
@@ -708,6 +719,7 @@ const AllFragrance = () => {
 
   const reversedProducts = reverseArray(paginatedProducts);
 
+  console.log("Paginated Products:", paginatedProducts);
   console.log("Current Products:", currentProducts);
   console.log("Fetch Product:", fetchProduct);
 
@@ -769,7 +781,7 @@ const AllFragrance = () => {
                 Array.from({ length: 6 }).map((_, index) => (
                   <ProductCardLoading key={index} />
                 ))
-              ) : paginatedProducts?.length > 0 ? (
+              ) : currentProducts?.length > 0 ? (
                 paginatedProducts.map((product) => (
                   <ProductCard product={product} key={product._id} />
                 ))
