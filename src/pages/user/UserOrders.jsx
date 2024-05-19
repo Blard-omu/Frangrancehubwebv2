@@ -56,7 +56,6 @@ const UserOrders = () => {
 
   return (
     <>
-    <Menu/>
       <Jumbotron title={`Hello ${auth?.user?.name}`} subTitle="Dashboard" />
       <div className="container-fluid">
         <div className="row">
@@ -126,7 +125,6 @@ const UserOrders = () => {
           </div>
         </div>
       </div>
-      <Footer/>
     </>
   );
 };

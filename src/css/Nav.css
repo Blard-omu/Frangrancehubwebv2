@@ -82,6 +82,9 @@ select option{
 .dropp{
   color: white !important;
 }
+.nav-link{
+  background-color: #0098B8 !important;
+}
 .first-drop:focus, .first-drop:hover, .first-drop::after{
   background-color: #0098B8 !important;
   color: aliceblue !important;

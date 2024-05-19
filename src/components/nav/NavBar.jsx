@@ -1,4 +1,3 @@
-
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -13,17 +12,11 @@ import { useNavigate, Link } from "react-router-dom";
 import Search from "../forms/Search.jsx";
 import { useCart } from "../../contexts/Cart";
 
-
-
-
-
-
 function Menu() {
   const { auth, logout } = useAuth();
   const { cart, clearCart } = useCart();
 
   const navigate = useNavigate();
-
 
   const handleLogout = () => {
     logout();
@@ -36,7 +29,7 @@ function Menu() {
       <div className="sticky-top header">
         <div className="top-nav">
           <div className="logo">
-            <Link to="/">
+            <Link className="" to="/">
               <img src={Logo} alt="" />
             </Link>
           </div>
@@ -57,26 +50,36 @@ function Menu() {
                   <Dropdown.Menu>
                     {!auth.user ? (
                       <div className="text-center">
-                        <Dropdown.Item  className="first-drop">
-                        <Link className="text-decoration-none text-dark" to="/login">Login</Link>
+                        <Dropdown.Item className="first-drop">
+                          <Link
+                            className="first-drop text-decoration-none text-dark"
+                            to="/login"
+                          >
+                            Login
+                          </Link>
                         </Dropdown.Item>
-                        <Dropdown.Item  className="first-drop">
-                          <Link className="text-decoration-none text-dark" to="/signup">Sign Up</Link>
+                        <Dropdown.Item className="first-drop">
+                          <Link
+                            className="first-drop text-decoration-none text-dark"
+                            to="/signup"
+                          >
+                            Sign Up
+                          </Link>
                         </Dropdown.Item>
                       </div>
                     ) : (
                       <div className="text-center">
-                        <Dropdown.Item
-                          className="first-drop"
-                        >
-                          <Link className="text-decoration-none text-dark" to={
-                            auth?.user.role === 1
-                              ? "/dashboard/admin"
-                              : "/dashboard/user"
-                          }>
+                        <Dropdown.Item className="first-drop">
+                          <Link
+                            className="text-decoration-none text-dark"
+                            to={
+                              auth?.user.role === 1
+                                ? "/dashboard/admin"
+                                : "/dashboard/user"
+                            }
+                          >
                             Dashboard
                           </Link>
-                          
                         </Dropdown.Item>
                         <Dropdown.Item
                           className="first-drop text-danger"
@@ -91,31 +94,34 @@ function Menu() {
               </div>
             </div>
 
-          <div className="everything-cart">
-          <div className="cart-sec">
-              <Link to="/cart">
-                <img src={Cartimg} alt="" />
-              </Link>
+            <div className="everything-cart">
+              <div className="cart-sec">
+                <Link  to="/cart">
+                  <img src={Cartimg} alt="" />
+                </Link>
+              </div>
+              <div className="cartcount">
+                <span>{cart.length > 0 ? cart.length : 0}</span>
+              </div>
             </div>
-            <div className="cartcount">
-              <span>{cart.length > 0 ? cart.length : 0}</span>
-            </div>
-          </div>
           </div>
         </div>
- 
+
         <Navbar expand="lg" className="bg-body-primary fs-5 " id="bottom">
           <Container className="">
             <Navbar.Collapse id="basic-navbar-nav">
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Nav className="me-auto">
                 <Nav.Link href="/" className="text-white">
-                <Link to="/" className="text-white text-decoration-none">
+                  <Link to="/" className="text-white text-decoration-none">
                     Home
                   </Link>
                 </Nav.Link>
                 <Nav.Link href="/all-fragrances" className="text-white">
-                  <Link to="/all-fragrances" className="text-white text-decoration-none">
+                  <Link
+                    to="/all-fragrances"
+                    className="text-white text-decoration-none"
+                  >
                     All Fragrance
                   </Link>
                 </Nav.Link>
@@ -164,17 +170,23 @@ function Menu() {
                   <NavDropdown.Item href="#action/3.2">Zaien</NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link href="/new-arrivals" className="text-white">
-                <Link to="/new-arrivals" className="text-white text-decoration-none">
+                  <Link
+                    to="/new-arrivals"
+                    className="text-white text-decoration-none"
+                  >
                     New Arrivals
                   </Link>
                 </Nav.Link>
                 <Nav.Link href="/blog" className="text-white">
-                <Link to="/blog" className="text-white text-decoration-none">
+                  <Link to="/blog" className="text-white text-decoration-none">
                     Blog
                   </Link>
                 </Nav.Link>
                 <Nav.Link href="/contact" className="text-white">
-                <Link to="/contact" className="text-white text-decoration-none">
+                  <Link
+                    to="/contact"
+                    className="text-white text-decoration-none"
+                  >
                     Contact
                   </Link>
                 </Nav.Link>

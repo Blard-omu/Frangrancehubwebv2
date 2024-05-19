@@ -48,8 +48,6 @@ const CustomerDetails = () => {
 
   return (
     <>
-      <Menu />
-      <SideNav />
       <div className="buni">
         <div className="text-dark p-1 bg-light mb-1">
           <h3>Customer Details</h3>
@@ -323,13 +321,12 @@ const CustomerDetails = () => {
           </div>
         </div>
         <div className="recently">
-            <RecentlyViewed limit={8}/>
-          </div>
-          <div className="">
-          <CountDownTimer/>
-          </div>
+          <RecentlyViewed limit={8} />
+        </div>
+        <div className="">
+          <CountDownTimer />
+        </div>
       </div>
-      
     </>
   );
 };

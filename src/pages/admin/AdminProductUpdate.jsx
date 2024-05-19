@@ -145,7 +145,6 @@ const AdminProductUpdate = () => {
 
   return (
     <div>
-      <Menu />
       <Jumbotron
         title={`Hello ${auth?.user?.name}`}
         subTitle="Admin Dashboard"
@@ -391,7 +390,6 @@ const AdminProductUpdate = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

@@ -4,16 +4,18 @@ import UserMenu from "../../components/nav/UserMenu";
 import Menu from "../../components/nav/NavBar";
 import SideNav from "../../components/nav/SideNav";
 
-
 const UserDashboard = () => {
   // context
   const { auth, setAuth } = useAuth();
 
   return (
     <>
-      <Menu />
-      <SideNav />
-      <Jumbotron title={`Hello ${auth?.user?.username ? auth?.user?.username : auth?.user?.name }`} subTitle="Dashboard" />
+      <Jumbotron
+        title={`Hello ${
+          auth?.user?.username ? auth?.user?.username : auth?.user?.name
+        }`}
+        subTitle="Dashboard"
+      />
 
       <div className="container-fluid">
         <div className="row">
@@ -32,6 +34,6 @@ const UserDashboard = () => {
       </div>
     </>
   );
-}
+};
 
-export default UserDashboard
+export default UserDashboard;

@@ -9,9 +9,7 @@ import SideNav from "../../components/nav/SideNav";
 import Footer from "../../components/Footer";
 import { useNavigate, useLocation } from "react-router-dom";
 
-
 const UserProfile = () => {
-
   const navigate = useNavigate();
   const location = useLocation();
   // context
@@ -35,8 +33,8 @@ const UserProfile = () => {
       setName(name);
       setEmail(email);
       setUserName(username);
-      setAddress({...address});
-      setAvatar(image)
+      setAddress({ ...address });
+      setAvatar(image);
     }
   }, [auth?.user]);
 
@@ -69,9 +67,10 @@ const UserProfile = () => {
         toast.success("Profile updated");
         const userRole = data?.updatedUser?.role;
         navigate(
-          location.state ? location.state.from : `/dashboard/${userRole === 1 ? "admin" : "user"}`
+          location.state
+            ? location.state.from
+            : `/dashboard/${userRole === 1 ? "admin" : "user"}`
         );
-
       }
     } catch (err) {
       console.log(err);
@@ -80,8 +79,6 @@ const UserProfile = () => {
 
   return (
     <>
-      <Menu />
-      <SideNav/>
       <Jumbotron
         title={`Hello ${
           auth?.user?.username ? auth?.user?.username : auth?.user?.name
@@ -95,8 +92,23 @@ const UserProfile = () => {
           </div>
           <div className="col-md-9">
             <div className="p-3 mt-2 mb-2 h4 bg-light">Profile</div>
-            <div className="" style={{width: "100px", height: "100px", borderRadius: "50%", border: "3px solid #0098B8"}}>
-              {avatar && <img src={avatar} alt="avatar" className=" w-100 h-100" style={{borderRadius: "50%"}}/> }
+            <div
+              className=""
+              style={{
+                width: "100px",
+                height: "100px",
+                borderRadius: "50%",
+                border: "3px solid #0098B8",
+              }}
+            >
+              {avatar && (
+                <img
+                  src={avatar}
+                  alt="avatar"
+                  className=" w-100 h-100"
+                  style={{ borderRadius: "50%" }}
+                />
+              )}
             </div>
 
             <form onSubmit={handleSubmit}>
@@ -126,9 +138,7 @@ const UserProfile = () => {
                 disabled={true}
               />
 
-              
-
-<input
+              <input
                 type="text"
                 className="form-control m-2 p-2"
                 placeholder="Enter your street address"
@@ -170,16 +180,16 @@ const UserProfile = () => {
                 onChange={handleImageChange}
               />
               <div className="my-2">
-              <button className="btn btn-primary m-2 p-2">Update profile</button>
+                <button className="btn btn-primary m-2 p-2">
+                  Update profile
+                </button>
               </div>
             </form>
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
 
 export default UserProfile;
-

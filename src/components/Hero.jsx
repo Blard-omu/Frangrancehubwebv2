@@ -33,24 +33,16 @@ function Hero() {
             <Carousel.Caption>
               <div className="text-body1">
                 <h1>Classic Elegance</h1>
-                <p className="hero-p">
+                <p className="hero-p d-flex flex-column">
                   Discover timeless fragrances that exude sophistication and
                   charm.
+                  <Link to="/all-fragrances" className="shop-btn">
+                    <button className="btn btn-dark py-2  w-100">
+                      Shop Now
+                    </button>
+                  </Link>
                 </p>
               </div>
-
-              <div className="hero-btn">
-              <Link to="/all-fragrances" style={{ textDecoration: "none" }}>
-                <button type="button" className="btn-pb btn-dark btn-p">
-                  Shop Now
-                </button>
-              </Link>
-              </div>
-              <Link to="/all-fragrances" style={{ textDecoration: "none" }}>
-                <button type="button" className="btn-mobile d-md-none btn-dark ">
-                  Shop Now
-                </button>
-              </Link>
             </Carousel.Caption>
           </div>
         </Carousel.Item>
@@ -62,19 +54,15 @@ function Hero() {
           <Carousel.Caption>
             <div className="text-body2">
               <h1>Sensual & Seductive</h1>
-              <p className="hero-p">
+              <p className="hero-p d-flex flex-column">
                 Delve into alluring scents that ignite passion and intrigue.
+                <Link to="/all-fragrances" className="shop-btn">
+                  <button className="btn btn-dark py-2  w-100">
+                    Shop Now
+                  </button>
+                </Link>
               </p>
             </div>
-
-            <Link to="/all-fragrances" style={{ textDecoration: "none" }}>
-              <button type="button" className="btn-pb btn-dark">
-                Shop Now
-              </button>
-              <button type="button" className="btn-mobile btn-dark ">
-                Shop Now
-              </button>
-            </Link>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -85,20 +73,16 @@ function Hero() {
           <Carousel.Caption>
             <div className="text-body3">
               <h1>Fresh & Crisp</h1>
-              <p className="hero-p">
+              <p className="hero-p d-flex flex-column">
                 Experience invigorating fragrances that captures the essence of
                 pure freshness.
+                <Link to="/all-fragrances" className="shop-btn">
+                  <button className="btn btn-dark  py-2  w-100">
+                    Shop Now
+                  </button>
+                </Link>
               </p>
             </div>
-
-            <Link to="/all-fragrances" style={{ textDecoration: "none" }}>
-              <button type="button" className="btn-pb btn-dark">
-                Shop Now
-              </button>
-              <button type="button" className="btn-mobile btn-dark ">
-                Shop Now
-              </button>
-            </Link>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -109,19 +93,15 @@ function Hero() {
           <Carousel.Caption>
             <div className="text-body4">
               <h1>Modern Chic</h1>
-              <p className="hero-p">
+              <p className="hero-p d-flex flex-column">
                 Uncover contemporary scents designed for the trendsetter in you.
+                <Link to="/all-fragrances" className="shop-btn">
+                  <button className="btn btn-dark py-2  w-100">
+                    Shop Now
+                  </button>
+                </Link>
               </p>
             </div>
-
-            <Link to="/all-fragrances" style={{ textDecoration: "none" }}>
-              <button type="button" className="btn-pb btn-dark">
-                Shop Now
-              </button>
-              <button type="button" className="btn-mobile btn-dark ">
-                Shop Now
-              </button>
-            </Link>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

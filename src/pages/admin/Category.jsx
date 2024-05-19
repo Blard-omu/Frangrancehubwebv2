@@ -22,7 +22,6 @@ const AdminCategory = () => {
 
   const { auth } = useAuth();
 
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -108,13 +107,10 @@ const AdminCategory = () => {
 
   return (
     <>
-    <Menu/>
-    <SideNav/>
-    <Jumbotron
+      <Jumbotron
         title={`Hello ${auth?.user?.name}`}
         subTitle="Admin Dashboard"
       />
-    
 
       <div className="container-fluid">
         <div className="row">
@@ -129,7 +125,7 @@ const AdminCategory = () => {
               setValue={setName}
               handleSubmit={handleFormSubmit}
               placeholder="Create new category..."
-              buttonText={loading1 ? <LoadBtn/> :"Submit"}
+              buttonText={loading1 ? <LoadBtn /> : "Submit"}
             />
 
             <hr />
@@ -150,7 +146,7 @@ const AdminCategory = () => {
               ))}
             </div>
 
-              {/* Modal */}
+            {/* Modal */}
             <>
               <Modal show={show} onHide={handleClose} centered>
                 <Modal.Header closeButton>
@@ -162,7 +158,7 @@ const AdminCategory = () => {
                     handleSubmit={handleCategoryUpdate}
                     value={updateName}
                     setValue={setUpdateName}
-                    buttonText={loading ? <LoadBtn/> :"Update"}
+                    buttonText={loading ? <LoadBtn /> : "Update"}
                     handleDelete={handleDelete}
                     loading={loading2}
                     LoadBtn={LoadBtn}

@@ -10,8 +10,6 @@ const AdminDashboard = () => {
 
   return (
     <>
-      <Menu />
-      <SideNav />
       <Jumbotron
         title={`Hello ${auth?.user?.name || "Admin"}`}
         subTitle="Admin Dashboard"
